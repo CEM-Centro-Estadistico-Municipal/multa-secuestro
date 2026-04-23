@@ -155,6 +155,10 @@ textarea.field-inp{resize:vertical;min-height:70px;}
 .modal-btn{height:44px;border-radius:8px;border:none;font-family:var(--condensed);font-size:15px;font-weight:800;cursor:pointer;}
 .modal-btn.cancel{background:var(--surface2);color:var(--text2);border:1px solid var(--border);}
 .modal-btn.confirm{background:var(--cem-rojo);color:#fff;}
+
+/* DEBUG CONSOLE */
+.debug-console{background:var(--cem-azul);color:#fff;font-family:var(--mono);font-size:11px;padding:10px 14px;border-radius:var(--r);margin-top:12px;white-space:pre-wrap;word-break:break-all;max-height:200px;overflow-y:auto;display:none;}
+.debug-console.show{display:block;}
 </style>
 </head>
 <body>
@@ -186,16 +190,16 @@ textarea.field-inp{resize:vertical;min-height:70px;}
   <div class="card accent-azul-oscuro" id="cfg-panel">
     <div class="card-hdr">
       <div class="card-hdr-dot" style="background:var(--cem-azul-medio);"></div>
-      <span class="card-hdr-lbl azul-oscuro">Configuración técnica — solo una vez</span>
+      <span class="card-hdr-lbl azul-oscuro">Configuración técnica</span>
     </div>
     <div class="field col">
-      <span class="field-lbl">URL del Script</span>
-      <input class="field-inp" id="cfg-url" placeholder="URL del Apps Script — la provee el supervisor">
+      <span class="field-lbl">URL del Script de Google Apps</span>
+      <input class="field-inp" id="cfg-url" value="https://script.google.com/macros/s/AKfycbyp3XLZc3KvhkYn7iIWRZkg49c_RSBgohBvYFS_A7vBOIhCbFTDUw7bCmOXOaUkkYVqgA/exec">
     </div>
     <div style="padding:0 14px 14px;">
       <button class="btn btn-save" style="height:40px;font-size:14px;" onclick="guardarConfig()">Guardar URL</button>
     </div>
-    <div class="cfg-note">Una vez guardada no hay que volver a tocarla. Los datos de inspector y secretario se completan en cada acta.</div>
+    <div class="cfg-note">URL pre-configurada. Si necesitás cambiarla, editá arriba y guardá.</div>
   </div>
   <div class="card" id="cfg-mini" style="display:none;">
     <div class="cfg-mini">
@@ -345,6 +349,9 @@ textarea.field-inp{resize:vertical;min-height:70px;}
     <button class="btn btn-export" onclick="exportCSV()">Exportar CSV</button>
   </div>
 
+  <!-- DEBUG -->
+  <div class="debug-console" id="debug-console"></div>
+
   <!-- LOG -->
   <div id="log-wrap" style="display:none;">
     <div class="log-title">Actas registradas</div>
@@ -383,21 +390,76 @@ var cfg={url:''}, rows=[];
 var form={tipo_acta:'',registro:'',casco:'',seguro:'',niega_firmar:'',fuga:''};
 var pendingDelete=null;
 
+/* ═══════ URL POR DEFECTO ═══════ */
+var DEFAULT_URL = 'https://script.google.com/macros/s/AKfycbyp3XLZc3KvhkYn7iIWRZkg49c_RSBgohBvYFS_A7vBOIhCbFTDUw7bCmOXOaUkkYVqgA/exec';
+
+/* ═══════ DEBUG ═══════ */
+function debug(msg){
+  var d=document.getElementById('debug-console');
+  d.classList.add('show');
+  d.textContent += '[' + new Date().toLocaleTimeString() + '] ' + msg + '\n';
+  d.scrollTop = d.scrollHeight;
+  console.log(msg);
+}
+
 /* ═══════ INIT ═══════ */
 function init(){
-  try{var c=localStorage.getItem(CKEY);if(c){cfg=JSON.parse(c);document.getElementById('cfg-url').value=cfg.url||'';}}catch(e){}
+  // Cargar config de localStorage o usar default
+  try{
+    var c=localStorage.getItem(CKEY);
+    if(c){
+      cfg=JSON.parse(c);
+    } else {
+      cfg={url: DEFAULT_URL};
+      localStorage.setItem(CKEY, JSON.stringify(cfg));
+    }
+  }catch(e){
+    cfg={url: DEFAULT_URL};
+  }
+  
+  document.getElementById('cfg-url').value = cfg.url || DEFAULT_URL;
   mostrarEstadoConfig();
+  
   try{var r=localStorage.getItem(RKEY);if(r)rows=JSON.parse(r);}catch(e){}
   setFechaHoraActual();actualizarFecha();setInterval(actualizarFecha,30000);
   renderStats();renderLog();
+  debug('Formulario iniciado. URL: ' + (cfg.url ? 'OK' : 'NO CONFIGURADA'));
 }
-function setFechaHoraActual(){var now=new Date();document.getElementById('f-fecha').value=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');document.getElementById('f-hora').value=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');}
-function actualizarFecha(){var now=new Date(),dias=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];document.getElementById('hdr-date').textContent=dias[now.getDay()]+' '+now.getDate()+' de '+meses[now.getMonth()]+' · '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');}
+
+function setFechaHoraActual(){
+  var now=new Date();
+  document.getElementById('f-fecha').value=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  document.getElementById('f-hora').value=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+}
+
+function actualizarFecha(){
+  var now=new Date();
+  var dias=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  var meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  document.getElementById('hdr-date').textContent=dias[now.getDay()]+' '+now.getDate()+' de '+meses[now.getMonth()]+' · '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+}
 
 /* ═══════ CONFIG ═══════ */
-function mostrarEstadoConfig(){var t=cfg.url&&cfg.url.length>0;document.getElementById('cfg-panel').style.display=t?'none':'block';document.getElementById('cfg-mini').style.display=t?'block':'none';}
-function guardarConfig(){var url=document.getElementById('cfg-url').value.trim();if(!url){showToast('Ingresá la URL','err');return;}cfg={url:url};try{localStorage.setItem(CKEY,JSON.stringify(cfg));}catch(e){}mostrarEstadoConfig();showToast('URL guardada','ok');}
-function editarConfig(){document.getElementById('cfg-panel').style.display='block';document.getElementById('cfg-mini').style.display='none';}
+function mostrarEstadoConfig(){
+  var t=cfg.url&&cfg.url.length>0;
+  document.getElementById('cfg-panel').style.display=t?'none':'block';
+  document.getElementById('cfg-mini').style.display=t?'block':'none';
+}
+
+function guardarConfig(){
+  var url=document.getElementById('cfg-url').value.trim();
+  if(!url){showToast('Ingresá la URL','err');return;}
+  cfg={url:url};
+  try{localStorage.setItem(CKEY,JSON.stringify(cfg));}catch(e){}
+  mostrarEstadoConfig();
+  showToast('URL guardada','ok');
+  debug('URL guardada: ' + url.substring(0,60) + '...');
+}
+
+function editarConfig(){
+  document.getElementById('cfg-panel').style.display='block';
+  document.getElementById('cfg-mini').style.display='none';
+}
 
 /* ═══════ TIPO ACTA ═══════ */
 function setTipoActa(tipo){
@@ -417,8 +479,19 @@ function setTipoActa(tipo){
 }
 
 /* ═══════ TOGGLES ═══════ */
-function setDoc(c,v,el){form[c]=v;var s=el.parentNode.querySelectorAll('.tg-btn');for(var i=0;i<s.length;i++)s[i].classList.remove('si','no');el.classList.add(v==='SI'?'si':'no');}
-function setSecuestroDoc(c,v,el){form[c]=v;var s=el.parentNode.querySelectorAll('.tg-btn');for(var i=0;i<s.length;i++)s[i].classList.remove('si','no');el.classList.add(v==='SI'?'si':'no');}
+function setDoc(c,v,el){
+  form[c]=v;
+  var s=el.parentNode.querySelectorAll('.tg-btn');
+  for(var i=0;i<s.length;i++)s[i].classList.remove('si','no');
+  el.classList.add(v==='SI'?'si':'no');
+}
+
+function setSecuestroDoc(c,v,el){
+  form[c]=v;
+  var s=el.parentNode.querySelectorAll('.tg-btn');
+  for(var i=0;i<s.length;i++)s[i].classList.remove('si','no');
+  el.classList.add(v==='SI'?'si':'no');
+}
 
 /* ═══════ VALIDACIÓN ═══════ */
 function limpiarValidacion(){
@@ -426,10 +499,18 @@ function limpiarValidacion(){
   document.getElementById('val-banner').classList.remove('show');
   document.getElementById('tipo-err').classList.remove('show');
 }
+
 function validar(){
   var errores=[];limpiarValidacion();
-  function req(id,label){var el=document.getElementById(id);if(!el)return;if(!el.value.trim()){el.classList.add('invalid');errores.push(label);}}
-  if(!form.tipo_acta){document.getElementById('tipo-err').classList.add('show');errores.push('Tipo de acta');}
+  function req(id,label){
+    var el=document.getElementById(id);
+    if(!el)return;
+    if(!el.value.trim()){el.classList.add('invalid');errores.push(label);}
+  }
+  if(!form.tipo_acta){
+    document.getElementById('tipo-err').classList.add('show');
+    errores.push('Tipo de acta');
+  }
   req('f-nro-acta','N° de acta');
   req('f-fecha','Fecha del hecho');
   req('f-hora','Hora del hecho');
@@ -454,8 +535,10 @@ function validar(){
 /* ═══════ GUARDAR ═══════ */
 function guardarActa(){
   if(!validar())return;
+  
   var now=new Date(),n=rows.length+1;
   var nroActa=document.getElementById('f-nro-acta').value.trim();
+  
   var row={
     n:n,
     fecha_registro:String(now.getDate()).padStart(2,'0')+'/'+(now.getMonth()+1)+'/'+now.getFullYear(),
@@ -474,12 +557,23 @@ function guardarActa(){
     domicilio:document.getElementById('f-domicilio').value.trim()||'--',
     descripcion:document.getElementById('f-descripcion').value.trim()||'--'
   };
+  
   if(form.tipo_acta==='multa'){
-    row.registro=form.registro||'--';row.casco=form.casco||'--';row.seguro=form.seguro||'--';
-    row.tipo_vehiculo='--';row.marca='--';row.modelo='--';row.chasis='--';row.color='--';row.dominio='--';
-    row.niega_firmar='--';row.fuga='--';
+    row.registro=form.registro||'--';
+    row.casco=form.casco||'--';
+    row.seguro=form.seguro||'--';
+    row.tipo_vehiculo='--';
+    row.marca='--';
+    row.modelo='--';
+    row.chasis='--';
+    row.color='--';
+    row.dominio='--';
+    row.niega_firmar='--';
+    row.fuga='--';
   } else {
-    row.registro='--';row.casco='--';row.seguro='--';
+    row.registro='--';
+    row.casco='--';
+    row.seguro='--';
     row.tipo_vehiculo=document.getElementById('f-sec-tipo').value.trim()||'--';
     row.marca=document.getElementById('f-sec-marca').value.trim()||'--';
     row.modelo=document.getElementById('f-sec-modelo').value.trim()||'--';
@@ -489,15 +583,50 @@ function guardarActa(){
     row.niega_firmar=form.niega_firmar||'--';
     row.fuga=form.fuga||'--';
   }
+  
+  // Guardar localmente SIEMPRE
   rows.push(row);
   try{localStorage.setItem(RKEY,JSON.stringify(rows));}catch(e){}
-  if(cfg.url){try{fetch(cfg.url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({},row,{accion:'acta'}))});}catch(e){}}
+  
+  debug('Acta local guardada. N°: ' + nroActa);
+  
+  // Enviar a Google Sheets
+  var urlToUse = cfg.url || DEFAULT_URL;
+  if(urlToUse && urlToUse.length > 0){
+    debug('Enviando a Sheets...');
+    
+    // Crear FormData
+    var formData = new FormData();
+    for(var key in row){
+      formData.append(key, row[key]);
+    }
+    formData.append('accion', 'acta');
+    
+    fetch(urlToUse, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData
+    })
+    .then(function(){
+      debug('Datos enviados (no-cors). Verificar Sheets manualmente.');
+      showToast('Acta #'+nroActa+' registrada ✓','ok');
+    })
+    .catch(function(err){
+      debug('Error en envío: ' + err.message);
+      showToast('Acta #'+nroActa+' guardada localmente','ok');
+    });
+    
+  } else {
+    debug('SIN URL configurada');
+    showToast('Acta #'+nroActa+' guardada localmente','ok');
+  }
+  
   renderStats();renderLog();limpiar(true);
-  showToast('Acta #'+nroActa+' registrada','ok');
 }
 
 /* ═══════ LIMPIAR ═══════ */
 function pedirLimpiar(){document.getElementById('modal-limpiar').classList.add('show');}
+
 function limpiar(sinModal){
   if(!sinModal)document.getElementById('modal-limpiar').classList.remove('show');
   limpiarValidacion();
@@ -514,8 +643,16 @@ function limpiar(sinModal){
 }
 
 /* ═══════ MODALES ═══════ */
-function cerrarModal(cual){document.getElementById('modal-'+cual).classList.remove('show');if(cual==='borrar')pendingDelete=null;}
-function pedirBorrar(n){pendingDelete=n;document.getElementById('modal-borrar').classList.add('show');}
+function cerrarModal(cual){
+  document.getElementById('modal-'+cual).classList.remove('show');
+  if(cual==='borrar')pendingDelete=null;
+}
+
+function pedirBorrar(n){
+  pendingDelete=n;
+  document.getElementById('modal-borrar').classList.add('show');
+}
+
 function confirmarBorrar(){
   if(pendingDelete===null){cerrarModal('borrar');return;}
   rows=rows.filter(function(r){return r.n!==pendingDelete;});
@@ -526,16 +663,22 @@ function confirmarBorrar(){
 
 /* ═══════ STATS + LOG ═══════ */
 function renderStats(){
-  var s=0,h=0,today=new Date(),hs=String(today.getDate()).padStart(2,'0')+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
-  for(var i=0;i<rows.length;i++){if(rows[i].tipo_acta==='SECUESTRO + MULTA')s++;if(rows[i].fecha_registro===hs)h++;}
+  var s=0,h=0,today=new Date();
+  var hs=String(today.getDate()).padStart(2,'0')+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+  for(var i=0;i<rows.length;i++){
+    if(rows[i].tipo_acta==='SECUESTRO + MULTA')s++;
+    if(rows[i].fecha_registro===hs)h++;
+  }
   document.getElementById('st-total').textContent=rows.length;
   document.getElementById('st-secuestro').textContent=s;
   document.getElementById('st-hoy').textContent=h;
 }
+
 function renderLog(){
   var wrap=document.getElementById('log-wrap'),list=document.getElementById('log-list');
   if(rows.length===0){wrap.style.display='none';return;}
-  wrap.style.display='block';var html='';
+  wrap.style.display='block';
+  var html='';
   for(var i=rows.length-1;i>=0;i--){
     var r=rows[i],chips='<span class="chip a">#'+r.nro_acta+'</span>';
     if(r.tipo_acta==='SECUESTRO + MULTA'){
@@ -569,11 +712,17 @@ function exportCSV(){
   var url=URL.createObjectURL(blob);
   var a=document.createElement('a');
   a.href=url;a.download='actas_cem_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
-  URL.revokeObjectURL(url);showToast('CSV exportado','ok');
+  URL.revokeObjectURL(url);
+  showToast('CSV exportado','ok');
 }
 
 /* ═══════ TOAST ═══════ */
-function showToast(msg,tipo){var t=document.getElementById('toast');t.textContent=msg;t.className='toast show '+(tipo||'');setTimeout(function(){t.className='toast';},2800);}
+function showToast(msg,tipo){
+  var t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast show '+(tipo||'');
+  setTimeout(function(){t.className='toast';},2800);
+}
 
 init();
 </script>
