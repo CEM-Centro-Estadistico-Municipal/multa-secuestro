@@ -188,6 +188,7 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
 @media (max-width:640px){.container{padding:14px;gap:14px;}.hdr-inner{padding:12px 14px;}.hdr-title{font-size:17px;}.hdr-logo-top{font-size:18px;}.stats{padding:14px 14px;}.st-val{font-size:24px;}.contexto-grid,.tipo-grid{grid-template-columns:1fr;}.vehiculo-grid{grid-template-columns:1fr;}.act-grid{grid-template-columns:1fr;}.act-field{border-right:none;}.actions{grid-template-columns:1fr;}.btn-save{grid-column:1/-1;}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;}}
 </style>
+<base target="_blank">
 </head>
 <body>
 <div class="hdr">
@@ -265,8 +266,14 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
         <span class="vehiculo-lbl">OTROS</span>
       </div>
     </div>
-    <div id="veh-otros-wrap" style="display:none;padding:0 18px 14px;">
-      <input class="field-inp" id="veh-otros-texto" placeholder="Especificá el tipo de vehículo..." oninput="form.tipo_vehiculo_sel_txt=this.value.trim()">
+    <div id="veh-otros-wrap" style="display:none;padding:0 18px 18px;">
+      <div style="background:var(--cem-azul-50);border:1px solid var(--cem-azul-200);border-radius:var(--radius-md);padding:14px 16px;margin-top:4px;">
+        <label style="display:block;font-family:var(--font-mono);font-size:10px;color:var(--cem-azul-700);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;font-weight:500;">
+          Tipo de vehículo específico <span style="color:var(--cem-rojo)">*</span>
+        </label>
+        <input class="field-inp" id="veh-otros-texto" placeholder="Ej: Camioneta, camión, cuatriciclo, bicicleta..." oninput="form.tipo_vehiculo_sel_txt=this.value.trim()" style="background:#fff;">
+        <p style="font-size:12px;color:var(--cem-tinta-ter);margin-top:8px;line-height:1.4;">Especificá el tipo exacto de vehículo para el registro del acta.</p>
+      </div>
     </div>
     <div class="vehiculo-err" id="vehiculo-err">Seleccioná el tipo de vehículo para continuar</div>
   </div>
@@ -477,10 +484,11 @@ function setTipoVehiculo(v){
   var txt=document.getElementById('veh-otros-texto');
   if(v==='otros'){
     wrap.style.display='block';
-    setTimeout(function(){txt.focus();},80);
+    setTimeout(function(){txt.focus();},100);
   } else {
     wrap.style.display='none';
     txt.value='';
+    form.tipo_vehiculo_sel_txt='';
     var secTipo=document.getElementById('f-sec-tipo');
     if(secTipo) secTipo.value = v==='moto'?'Moto':'Auto';
   }
@@ -533,7 +541,11 @@ function validar(){
   if(!form.tipo_vehiculo_sel){document.getElementById('vehiculo-err').classList.add('show');errores.push('Tipo de vehículo');}
   else if(form.tipo_vehiculo_sel==='otros'){
     var otrosTxt=document.getElementById('veh-otros-texto').value.trim();
-    if(!otrosTxt){document.getElementById('veh-otros-texto').classList.add('invalid');errores.push('Especificá el tipo de vehículo en "Otros"');}
+    if(!otrosTxt){
+      document.getElementById('veh-otros-texto').classList.add('invalid');
+      errores.push('Completá el tipo de vehículo en "Otros"');
+      document.getElementById('veh-otros-wrap').style.display='block';
+    }
     else{form.tipo_vehiculo_sel_txt=otrosTxt;}
   }
   if(!form.tipo_acta){document.getElementById('tipo-err').classList.add('show');errores.push('Tipo de acta');}
