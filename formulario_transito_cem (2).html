@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Actas de Comprobación · Tránsito · CEM Esquina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root {
+  --cem-azul-50: #e8eef5;
+  --cem-azul-100: #c5d8e8;
+  --cem-azul-200: #9ebdd8;
+  --cem-azul-300: #78a2c8;
+  --cem-azul-400: #5287b8;
+  --cem-azul-500: #2c6ca8;
+  --cem-azul-600: #1a5a96;
+  --cem-azul-700: #0e5a9e;
+  --cem-azul-800: #0a3a68;
+  --cem-azul-900: #062a4e;
+  --cem-ocre-50: #f5efe4;
+  --cem-ocre-100: #e8d9c2;
+  --cem-ocre-200: #d4bf9a;
+  --cem-ocre-300: #c0a572;
+  --cem-ocre-400: #ac8b4a;
+  --cem-ocre-500: #b8863d;
+  --cem-ocre-600: #8f6a2e;
+  --cem-ocre-700: #664e21;
+  --cem-ocre-800: #3d3214;
+  --cem-ocre-900: #141607;
+  --cem-papel: #f8f5ee;
+  --cem-papel-2: #eee6d5;
+  --cem-tinta: #171614;
+  --cem-tinta-sec: #5a5248;
+  --cem-tinta-ter: #8a8070;
+  --cem-verde: #2f7d32;
+  --cem-rojo: #a8322c;
+  --cem-amarillo: #c9971a;
+  --bg: var(--cem-papel);
+  --surface: #ffffff;
+  --surface-2: var(--cem-papel-2);
+  --border: #d4cdc0;
+  --border-focus: var(--cem-azul-400);
+  --font-sans: "IBM Plex Sans", sans-serif;
+  --font-serif: "IBM Plex Serif", serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --shadow-1: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 1px rgba(15,23,42,0.06);
+  --shadow-2: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-3: 0 12px 32px rgba(15, 23, 42, 0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--cem-tinta);min-height:100vh;padding-bottom:96px;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+.hdr{background:var(--cem-azul-800);position:sticky;top:0;z-index:20;box-shadow:var(--shadow-2);}
+.hdr-inner{padding:14px 20px;display:flex;align-items:center;gap:14px;max-width:1200px;margin:0 auto;}
+.hdr-logo{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.hdr-logo-top{font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--cem-ocre-400);letter-spacing:0.04em;line-height:1;}
+.hdr-logo-sub{font-family:var(--font-mono);font-size:9px;color:rgba(184,134,61,0.7);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px;}
+.hdr-divider{width:1px;height:36px;background:rgba(212,205,192,0.25);flex-shrink:0;}
+.hdr-text{flex:1;}
+.hdr-title{font-family:var(--font-serif);font-size:20px;font-weight:700;color:#fff;letter-spacing:0.02em;line-height:1.1;}
+.hdr-badge{display:inline-block;background:var(--cem-ocre-500);color:#fff;font-family:var(--font-mono);font-size:9px;font-weight:500;padding:3px 8px;border-radius:var(--radius-sm);letter-spacing:0.08em;margin-top:5px;text-transform:uppercase;}
+.hdr-date{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.6);padding:8px 20px;background:rgba(0,0,0,0.15);letter-spacing:0.04em;max-width:1200px;margin:0 auto;}
+.container{padding:20px;display:flex;flex-direction:column;gap:20px;max-width:1200px;margin:0 auto;}
+.stats{background:var(--cem-azul-800);border-radius:var(--radius-md);padding:18px 20px;display:grid;grid-template-columns:repeat(3,1fr);box-shadow:var(--shadow-2);position:relative;overflow:hidden;}
+.stats::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cem-ocre-400),var(--cem-verde),var(--cem-amarillo));}
+.st-item{text-align:center;padding:6px 0;}
+.st-item+.st-item{border-left:1px solid rgba(212,205,192,0.15);}
+.st-val{font-family:var(--font-mono);font-size:28px;font-weight:500;line-height:1;font-feature-settings:"tnum";}
+.st-val.a{color:var(--cem-ocre-400);}.st-val.r{color:var(--cem-rojo);}.st-val.g{color:var(--cem-verde);}
+.st-lbl{font-family:var(--font-sans);font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);margin-top:6px;letter-spacing:0.06em;text-transform:uppercase;}
+.card{background:var(--surface);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-1);border:1px solid var(--border);}
+.card-hdr{padding:14px 18px;background:var(--cem-papel);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.card-hdr-icon{width:20px;height:20px;flex-shrink:0;color:var(--cem-azul-600);}
+.card-hdr-lbl{font-family:var(--font-serif);font-size:15px;font-weight:700;letter-spacing:0.03em;flex:1;color:var(--cem-azul-800);}
+.card-hdr-req{font-family:var(--font-mono);font-size:10px;color:var(--cem-rojo);background:rgba(168,50,44,0.08);padding:3px 8px;border-radius:var(--radius-sm);flex-shrink:0;letter-spacing:0.04em;text-transform:uppercase;}
+.field{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;min-height:56px;}
+.field:last-child{border-bottom:none;}.field.col{flex-direction:column;align-items:stretch;gap:8px;}
+.field-lbl{font-size:14px;font-weight:500;color:var(--cem-tinta);flex:1;line-height:1.4;}
+.req-mark{color:var(--cem-rojo);margin-left:3px;}
+.field-inp{background:var(--cem-papel);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--cem-tinta);font-family:var(--font-sans);font-size:14px;padding:9px 12px;outline:none;width:100%;transition:border-color 0.15s,box-shadow 0.15s,background 0.15s;}
+.field-inp:focus{border-color:var(--border-focus);background:#fff;box-shadow:0 0 0 3px rgba(44,108,168,0.1);}
+.field-inp.short{width:160px;}
+.field-inp.invalid{border-color:var(--cem-rojo)!important;background:rgba(168,50,44,0.04)!important;box-shadow:0 0 0 2px rgba(168,50,44,0.12)!important;}
+textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
+.act-grid{display:grid;grid-template-columns:1fr 1fr;}
+.act-field{padding:12px 18px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);}
+.act-field:nth-child(2n){border-right:none;}.act-field:nth-last-child(-n+2){border-bottom:none;}
+.act-field-lbl{font-family:var(--font-mono);font-size:10px;color:var(--cem-tinta-ter);margin-bottom:6px;letter-spacing:0.04em;text-transform:uppercase;}
+.contexto-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:18px;}
+.contexto-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 14px;border:2px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);background:var(--cem-papel);}
+.contexto-item:hover{border-color:var(--cem-azul-300);box-shadow:var(--shadow-2);}
+.contexto-item:active{transform:scale(0.98);transition-duration:0.08s;}
+.contexto-item.selected-operativo{background:rgba(47,125,50,0.08);border-color:var(--cem-verde);}
+.contexto-item.selected-siniestro{background:rgba(14,90,158,0.08);border-color:var(--cem-azul-600);}
+.contexto-icon{width:28px;height:28px;color:var(--cem-tinta-ter);}
+.contexto-item.selected-operativo .contexto-icon{color:var(--cem-verde);}
+.contexto-item.selected-siniestro .contexto-icon{color:var(--cem-azul-600);}
+.contexto-lbl{font-family:var(--font-serif);font-size:14px;font-weight:700;letter-spacing:0.04em;color:var(--cem-tinta-sec);text-align:center;}
+.contexto-item.selected-operativo .contexto-lbl{color:var(--cem-verde);}
+.contexto-item.selected-siniestro .contexto-lbl{color:var(--cem-azul-700);}
+.contexto-err{font-family:var(--font-mono);font-size:12px;color:var(--cem-rojo);padding:0 18px 12px;display:none;}
+.contexto-err.show{display:block;}
+.vehiculo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:18px;}
+.vehiculo-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:22px 12px;border:2px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);background:var(--cem-papel);}
+.vehiculo-item:hover{border-color:var(--cem-azul-300);box-shadow:var(--shadow-2);}
+.vehiculo-item:active{transform:scale(0.98);transition-duration:0.08s;}
+.vehiculo-item.selected{background:rgba(14,90,158,0.08);border-color:var(--cem-azul-600);}
+.vehiculo-icon{width:32px;height:32px;color:var(--cem-tinta-ter);}
+.vehiculo-item.selected .vehiculo-icon{color:var(--cem-azul-600);}
+.vehiculo-lbl{font-family:var(--font-serif);font-size:15px;font-weight:700;letter-spacing:0.04em;color:var(--cem-tinta-sec);text-align:center;}
+.vehiculo-item.selected .vehiculo-lbl{color:var(--cem-azul-700);}
+.vehiculo-err{font-family:var(--font-mono);font-size:12px;color:var(--cem-rojo);padding:0 18px 12px;display:none;}
+.vehiculo-err.show{display:block;}
+.tipo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:18px;}
+.tipo-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 14px;border:2px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);background:var(--cem-papel);}
+.tipo-item:hover{border-color:var(--cem-azul-300);box-shadow:var(--shadow-2);}
+.tipo-item:active{transform:scale(0.98);transition-duration:0.08s;}
+.tipo-item.selected-multa{background:rgba(201,151,26,0.08);border-color:var(--cem-amarillo);}
+.tipo-item.selected-secuestro{background:rgba(168,50,44,0.08);border-color:var(--cem-rojo);}
+.tipo-icon{width:26px;height:26px;color:var(--cem-tinta-ter);}
+.tipo-item.selected-multa .tipo-icon{color:var(--cem-amarillo);}
+.tipo-item.selected-secuestro .tipo-icon{color:var(--cem-rojo);}
+.tipo-lbl{font-family:var(--font-serif);font-size:14px;font-weight:700;letter-spacing:0.04em;color:var(--cem-tinta-sec);text-align:center;}
+.tipo-item.selected-multa .tipo-lbl{color:#8a6a00;}
+.tipo-item.selected-secuestro .tipo-lbl{color:var(--cem-rojo);}
+.tipo-err{font-family:var(--font-mono);font-size:12px;color:var(--cem-rojo);padding:0 18px 12px;display:none;}
+.tipo-err.show{display:block;}
+.tg-wrap{display:flex;gap:6px;flex-shrink:0;}
+.tg-btn{min-width:44px;height:34px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--cem-papel);color:var(--cem-tinta-sec);font-family:var(--font-mono);font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.12s;-webkit-user-select:none;user-select:none;padding:0 10px;}
+.tg-btn:hover{border-color:var(--cem-azul-300);}
+.tg-btn.si{background:rgba(47,125,50,0.12);border-color:var(--cem-verde);color:var(--cem-verde);}
+.tg-btn.no{background:rgba(168,50,44,0.1);border-color:var(--cem-rojo);color:var(--cem-rojo);}
+.doc-grid{display:grid;grid-template-columns:1fr;}
+.doc-item{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);gap:12px;}
+.doc-item:last-child{border-bottom:none;}
+.doc-lbl{font-size:14px;font-weight:500;color:var(--cem-tinta);flex:1;}
+.secuestro-section{display:none;}.secuestro-section.visible{display:block;}
+.secuestro-field{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:8px;}
+.secuestro-field:last-child{border-bottom:none;}
+.secuestro-field-lbl{font-size:13px;font-weight:600;color:var(--cem-tinta-sec);}
+.val-banner{display:none;background:rgba(168,50,44,0.06);border:1px solid var(--cem-rojo);border-radius:var(--radius-md);padding:14px 18px;}
+.val-banner.show{display:block;}
+.val-banner-title{font-family:var(--font-serif);font-size:14px;font-weight:700;color:var(--cem-rojo);letter-spacing:0.03em;margin-bottom:8px;}
+.val-banner ul{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.val-banner li{font-family:var(--font-mono);font-size:12px;color:var(--cem-rojo);display:flex;align-items:center;gap:8px;}
+.val-banner li::before{content:"\2192";font-size:11px;}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.btn{height:52px;border-radius:var(--radius-md);border:none;font-family:var(--font-sans);font-size:15px;font-weight:600;letter-spacing:0.02em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity 0.12s,transform 0.1s,background 0.15s;}
+.btn:active{opacity:0.9;transform:scale(0.98);transition-duration:0.08s;}
+.btn-save{background:var(--cem-azul-700);color:#fff;grid-column:1/-1;}
+.btn-save:hover{background:var(--cem-azul-800);}
+.btn-clear{background:var(--surface);border:2px solid var(--border);color:var(--cem-tinta-sec);}
+.btn-clear:hover{border-color:var(--cem-azul-300);color:var(--cem-azul-700);}
+.btn-export{background:rgba(47,125,50,0.1);border:1px solid var(--cem-verde);color:var(--cem-verde);}
+.btn-export:hover{background:rgba(47,125,50,0.15);}
+.log-title{font-family:var(--font-serif);font-size:14px;font-weight:700;color:var(--cem-tinta-ter);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
+.log-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-1);transition:box-shadow 0.15s,border-color 0.15s;}
+.log-item:hover{box-shadow:var(--shadow-2);border-color:var(--cem-azul-200);}
+.chips{display:flex;flex-wrap:wrap;gap:5px;flex:1;}
+.chip{font-family:var(--font-mono);font-size:10px;padding:3px 8px;border-radius:var(--radius-sm);border:1px solid var(--border);color:var(--cem-tinta-sec);background:var(--cem-papel);font-feature-settings:"tnum";}
+.chip.r{background:rgba(168,50,44,0.08);border-color:var(--cem-rojo);color:var(--cem-rojo);}
+.chip.g{background:rgba(47,125,50,0.08);border-color:var(--cem-verde);color:var(--cem-verde);}
+.chip.a{background:rgba(201,151,26,0.1);border-color:var(--cem-amarillo);color:#7a5c00;}
+.chip.b{background:rgba(14,90,158,0.08);border-color:var(--cem-azul-400);color:var(--cem-azul-700);}
+.chip.t{background:var(--cem-azul-50);border-color:var(--cem-azul-200);color:var(--cem-azul-700);}
+.del-btn{width:30px;height:30px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--cem-tinta-ter);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.12s;}
+.del-btn:hover{border-color:var(--cem-rojo);color:var(--cem-rojo);background:rgba(168,50,44,0.06);}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--cem-azul-800);color:#fff;border-radius:var(--radius-pill);padding:12px 24px;font-family:var(--font-sans);font-size:14px;font-weight:600;letter-spacing:0.02em;transition:transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);z-index:100;white-space:nowrap;pointer-events:none;box-shadow:var(--shadow-3);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast.ok{background:var(--cem-verde);color:#fff;}.toast.err{background:var(--cem-rojo);color:#fff;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(23,22,20,0.5);z-index:200;align-items:flex-end;justify-content:center;}
+.modal-overlay.show{display:flex;}
+.modal{background:var(--surface);border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:24px;width:100%;max-width:480px;box-shadow:var(--shadow-3);}
+.modal-title{font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--cem-tinta);margin-bottom:10px;}
+.modal-body{font-size:14px;color:var(--cem-tinta-sec);margin-bottom:20px;line-height:1.5;}
+.modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.modal-btn{height:48px;border-radius:var(--radius-md);border:none;font-family:var(--font-sans);font-size:15px;font-weight:600;cursor:pointer;transition:all 0.12s;}
+.modal-btn.cancel{background:var(--cem-papel);color:var(--cem-tinta-sec);border:1px solid var(--border);}
+.modal-btn.cancel:hover{border-color:var(--cem-azul-300);color:var(--cem-azul-700);}
+.modal-btn.confirm{background:var(--cem-rojo);color:#fff;}
+.modal-btn.confirm:hover{background:#8a2824;}
+@media (max-width:640px){.container{padding:14px;gap:14px;}.hdr-inner{padding:12px 14px;}.hdr-title{font-size:17px;}.hdr-logo-top{font-size:18px;}.stats{padding:14px 14px;}.st-val{font-size:24px;}.contexto-grid,.tipo-grid{grid-template-columns:1fr;}.vehiculo-grid{grid-template-columns:1fr;}.act-grid{grid-template-columns:1fr;}.act-field{border-right:none;}.actions{grid-template-columns:1fr;}.btn-save{grid-column:1/-1;}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;}}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-logo">
+      <div class="hdr-logo-top">CEM</div>
+      <div class="hdr-logo-sub">Esquina · Ctes.</div>
+    </div>
+    <div class="hdr-divider"></div>
+    <div class="hdr-text">
+      <div class="hdr-title">Actas de Comprobación</div>
+      <span class="hdr-badge">Tránsito · Municipalidad de Esquina</span>
+    </div>
+  </div>
+  <div class="hdr-date" id="hdr-date">cargando...</div>
+</div>
+
+<div class="container">
+
+  <div class="stats">
+    <div class="st-item"><div class="st-val a" id="st-total">0</div><div class="st-lbl">Actas</div></div>
+    <div class="st-item"><div class="st-val r" id="st-secuestro">0</div><div class="st-lbl">c/ Secuestro</div></div>
+    <div class="st-item"><div class="st-val g" id="st-hoy">0</div><div class="st-lbl">Hoy</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">
+      <i data-lucide="shield-check" class="card-hdr-icon"></i>
+      <span class="card-hdr-lbl">Actuantes — completar en cada acta</span>
+    </div>
+    <div class="act-grid">
+      <div class="act-field"><div class="act-field-lbl">Inspector/a de tránsito</div><input class="field-inp" id="act-inspector" placeholder="Apellido y nombre"></div>
+      <div class="act-field"><div class="act-field-lbl">Legajo inspector/a</div><input class="field-inp" id="act-legajo-insp" placeholder="N° legajo"></div>
+      <div class="act-field"><div class="act-field-lbl">Secretario/a</div><input class="field-inp" id="act-secretario" placeholder="Apellido y nombre"></div>
+      <div class="act-field"><div class="act-field-lbl">Legajo secretario/a</div><input class="field-inp" id="act-legajo-sec" placeholder="N° legajo"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">
+      <i data-lucide="map-pin" class="card-hdr-icon"></i>
+      <span class="card-hdr-lbl">Contexto de la infracción</span>
+      <span class="card-hdr-req">Obligatorio</span>
+    </div>
+    <div class="contexto-grid">
+      <div class="contexto-item" id="ctx-operativo" onclick="setContexto('operativo')">
+        <i data-lucide="car" class="contexto-icon"></i>
+        <span class="contexto-lbl">OPERATIVO</span>
+      </div>
+      <div class="contexto-item" id="ctx-siniestro" onclick="setContexto('siniestro')">
+        <i data-lucide="alert-triangle" class="contexto-icon"></i>
+        <span class="contexto-lbl">SINIESTRO</span>
+      </div>
+    </div>
+    <div class="contexto-err" id="contexto-err">Seleccioná el contexto para continuar</div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">
+      <i data-lucide="truck" class="card-hdr-icon"></i>
+      <span class="card-hdr-lbl">Tipo de Vehículo</span>
+      <span class="card-hdr-req">Obligatorio</span>
+    </div>
+    <div class="vehiculo-grid">
+      <div class="vehiculo-item" id="veh-moto" onclick="setTipoVehiculo('moto')">
+        <i data-lucide="bike" class="vehiculo-icon"></i>
+        <span class="vehiculo-lbl">MOTO</span>
+      </div>
+      <div class="vehiculo-item" id="veh-auto" onclick="setTipoVehiculo('auto')">
+        <i data-lucide="car" class="vehiculo-icon"></i>
+        <span class="vehiculo-lbl">AUTO</span>
+      </div>
+      <div class="vehiculo-item" id="veh-otros" onclick="setTipoVehiculo('otros')">
+        <i data-lucide="truck" class="vehiculo-icon"></i>
+        <span class="vehiculo-lbl">OTROS</span>
+      </div>
+    </div>
+    <div id="veh-otros-wrap" style="display:none;padding:0 18px 14px;">
+      <input class="field-inp" id="veh-otros-texto" placeholder="Especificá el tipo de vehículo..." oninput="form.tipo_vehiculo_sel_txt=this.value.trim()">
+    </div>
+    <div class="vehiculo-err" id="vehiculo-err">Seleccioná el tipo de vehículo para continuar</div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">
+      <i data-lucide="file-text" class="card-hdr-icon"></i>
+      <span class="card-hdr-lbl">Tipo de Acta</span>
+      <span class="card-hdr-req">Obligatorio</span>
+    </div>
+    <div class="tipo-grid">
+      <div class="tipo-item" id="tipo-multa" onclick="setTipoActa('multa')">
+        <i data-lucide="file-minus" class="tipo-icon"></i>
+        <span class="tipo-lbl">MULTA</span>
+      </div>
+      <div class="tipo-item" id="tipo-secuestro" onclick="setTipoActa('secuestro')">
+        <i data-lucide="ban" class="tipo-icon"></i>
+        <span class="tipo-lbl">SECUESTRO + MULTA</span>
+      </div>
+    </div>
+    <div class="tipo-err" id="tipo-err">Seleccioná el tipo de acta para continuar</div>
+  </div>
+
+  <div class="card secuestro-section" id="secuestro-section">
+    <div class="card-hdr">
+      <i data-lucide="lock" class="card-hdr-icon" style="color:var(--cem-rojo);"></i>
+      <span class="card-hdr-lbl" style="color:var(--cem-rojo);">Datos del Vehículo — Secuestro</span>
+    </div>
+    <div class="secuestro-field">
+      <span class="secuestro-field-lbl">Tipo de vehículo <span class="req-mark">*</span></span>
+      <input class="field-inp" type="text" id="f-sec-tipo" placeholder="Moto / Auto / Camioneta...">
+    </div>
+    <div class="secuestro-field">
+      <span class="secuestro-field-lbl">Marca <span class="req-mark">*</span></span>
+      <input class="field-inp" type="text" id="f-sec-marca" placeholder="Ej: Honda">
+    </div>
+    <div class="secuestro-field">
+      <span class="secuestro-field-lbl">Modelo</span>
+      <input class="field-inp" type="text" id="f-sec-modelo" placeholder="Ej: Wave 110">
+    </div>
+    <div class="secuestro-field">
+      <span class="secuestro-field-lbl">Número de chasis <span class="req-mark">*</span></span>
+      <input class="field-inp" type="text" id="f-sec-chasis" placeholder="N° de chasis completo">
+    </div>
+    <div class="secuestro-field">
+      <span class="secuestro-field-lbl">Color</span>
+      <input class="field-inp" type="text" id="f-sec-color" placeholder="Ej: Rojo, Negro, Azul...">
+    </div>
+    <div class="secuestro-field">
+      <span class="secuestro-field-lbl">Número de dominio (Patente)</span>
+      <input class="field-inp" type="text" id="f-sec-dominio" placeholder="Ej: A123BCD o 'no posee'">
+    </div>
+    <div class="secuestro-field" style="background:rgba(168,50,44,0.04);">
+      <span class="secuestro-field-lbl" style="color:var(--cem-rojo);">¿Infractor se niega a firmar?</span>
+      <div class="tg-wrap" style="margin-top:4px;">
+        <div class="tg-btn" onclick="setSecuestroDoc('niega_firmar','SI',this)">SI</div>
+        <div class="tg-btn" onclick="setSecuestroDoc('niega_firmar','NO',this)">NO</div>
+      </div>
+    </div>
+    <div class="secuestro-field" style="background:rgba(168,50,44,0.04);">
+      <span class="secuestro-field-lbl" style="color:var(--cem-rojo);">¿Se da a la fuga?</span>
+      <div class="tg-wrap" style="margin-top:4px;">
+        <div class="tg-btn" onclick="setSecuestroDoc('fuga','SI',this)">SI</div>
+        <div class="tg-btn" onclick="setSecuestroDoc('fuga','NO',this)">NO</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">
+      <i data-lucide="clipboard-list" class="card-hdr-icon"></i>
+      <span class="card-hdr-lbl">Datos del Acta</span>
+      <span class="card-hdr-req">Obligatorio</span>
+    </div>
+    <div class="field"><span class="field-lbl">N° Acta <span class="req-mark">*</span></span><input class="field-inp short" type="text" id="f-nro-acta" placeholder="Ej: 21507"></div>
+    <div class="field"><span class="field-lbl">Fecha del hecho <span class="req-mark">*</span></span><input class="field-inp short" type="date" id="f-fecha"></div>
+    <div class="field"><span class="field-lbl">Hora del hecho <span class="req-mark">*</span></span><input class="field-inp short" type="time" id="f-hora"></div>
+    <div class="field col"><span class="field-lbl">Dirección del hecho <span class="req-mark">*</span></span><input class="field-inp" type="text" id="f-direccion" placeholder="Calle, intersección, referencia..."></div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">
+      <i data-lucide="user" class="card-hdr-icon"></i>
+      <span class="card-hdr-lbl">Conductor / Infractor</span>
+      <span class="card-hdr-req">Obligatorio</span>
+    </div>
+    <div class="field col"><span class="field-lbl">Apellido y nombre <span class="req-mark">*</span></span><input class="field-inp" type="text" id="f-conductor" placeholder="Nombre completo del conductor"></div>
+    <div class="field col"><span class="field-lbl">DNI <span class="req-mark">*</span></span><input class="field-inp" type="text" id="f-dni" placeholder="Número de documento"></div>
+    <div class="field col"><span class="field-lbl">Domicilio</span><input class="field-inp" type="text" id="f-domicilio" placeholder="Dirección completa del infractor"></div>
+  </div>
+
+  <div class="card" id="documentacion-section">
+    <div class="card-hdr">
+      <i data-lucide="id-card" class="card-hdr-icon"></i>
+      <span class="card-hdr-lbl">Documentación del conductor</span>
+    </div>
+    <div class="doc-grid">
+      <div class="doc-item"><span class="doc-lbl">¿Posee registro / licencia?</span><div class="tg-wrap"><div class="tg-btn" onclick="setDoc('registro','SI',this)">SI</div><div class="tg-btn" onclick="setDoc('registro','NO',this)">NO</div></div></div>
+      <div class="doc-item"><span class="doc-lbl">¿Usa casco? (si aplica)</span><div class="tg-wrap"><div class="tg-btn" onclick="setDoc('casco','SI',this)">SI</div><div class="tg-btn" onclick="setDoc('casco','NO',this)">NO</div></div></div>
+      <div class="doc-item"><span class="doc-lbl">¿Posee seguro?</span><div class="tg-wrap"><div class="tg-btn" onclick="setDoc('seguro','SI',this)">SI</div><div class="tg-btn" onclick="setDoc('seguro','NO',this)">NO</div></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">
+      <i data-lucide="align-left" class="card-hdr-icon"></i>
+      <span class="card-hdr-lbl">Observaciones</span>
+    </div>
+    <div class="field col">
+      <span class="field-lbl">Descripción del hecho / Infracciones</span>
+      <textarea class="field-inp" id="f-descripcion" placeholder="Detallá las infracciones observadas, estado del vehículo, etc..." rows="4"></textarea>
+    </div>
+  </div>
+
+  <div class="val-banner" id="val-banner">
+    <div class="val-banner-title">Completá los campos obligatorios:</div>
+    <ul id="val-lista"></ul>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-save" onclick="guardarActa()">
+      <i data-lucide="clipboard-check" style="width:18px;height:18px;"></i>
+      Registrar acta
+    </button>
+    <button class="btn btn-clear" onclick="pedirLimpiar()">
+      <i data-lucide="rotate-ccw" style="width:16px;height:16px;"></i>
+      Limpiar
+    </button>
+    <button class="btn btn-export" onclick="exportCSV()">
+      <i data-lucide="download" style="width:16px;height:16px;"></i>
+      Exportar CSV
+    </button>
+  </div>
+
+  <div id="log-wrap" style="display:none;">
+    <div class="log-title">Actas registradas</div>
+    <div id="log-list"></div>
+  </div>
+
+</div>
+
+<div class="modal-overlay" id="modal-borrar">
+  <div class="modal">
+    <div class="modal-title">¿Borrar esta acta?</div>
+    <div class="modal-body">Esta acción no se puede deshacer.</div>
+    <div class="modal-actions">
+      <button class="modal-btn cancel" onclick="cerrarModal('borrar')">Cancelar</button>
+      <button class="modal-btn confirm" onclick="confirmarBorrar()">Sí, borrar</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-limpiar">
+  <div class="modal">
+    <div class="modal-title">¿Limpiar el formulario?</div>
+    <div class="modal-body">Se van a perder todos los datos ingresados en este formulario.</div>
+    <div class="modal-actions">
+      <button class="modal-btn cancel" onclick="cerrarModal('limpiar')">Cancelar</button>
+      <button class="modal-btn confirm" onclick="limpiar()">Sí, limpiar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var SCRIPT_URL='https://script.google.com/macros/s/AKfycbyp3XLZc3KvhkYn7iIWRZkg49c_RSBgohBvYFS_A7vBOIhCbFTDUw7bCmOXOaUkkYVqgA/exec';
+var RKEY='comprobacion_rows';
+var rows=[];
+var form={contexto:'',tipo_vehiculo_sel:'',tipo_acta:'',registro:'',casco:'',seguro:'',niega_firmar:'',fuga:''};
+var pendingDelete=null;
+
+function init(){
+  try{var r=localStorage.getItem(RKEY);if(r)rows=JSON.parse(r);}catch(e){}
+  setFechaHoraActual();actualizarFecha();setInterval(actualizarFecha,30000);
+  renderStats();renderLog();
+  if(typeof lucide !== 'undefined'){lucide.createIcons();}
+}
+function setFechaHoraActual(){
+  var now=new Date();
+  document.getElementById('f-fecha').value=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  document.getElementById('f-hora').value=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+}
+function actualizarFecha(){
+  var now=new Date(),
+      dias=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],
+      meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  document.getElementById('hdr-date').textContent=dias[now.getDay()]+' '+now.getDate()+' de '+meses[now.getMonth()]+' · '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+}
+
+function setContexto(v){
+  form.contexto=v;
+  document.getElementById('ctx-operativo').className='contexto-item';
+  document.getElementById('ctx-siniestro').className='contexto-item';
+  document.getElementById('ctx-operativo').classList.toggle('selected-operativo', v==='operativo');
+  document.getElementById('ctx-siniestro').classList.toggle('selected-siniestro', v==='siniestro');
+  document.getElementById('contexto-err').classList.remove('show');
+}
+
+function setTipoVehiculo(v){
+  form.tipo_vehiculo_sel=v;
+  form.tipo_vehiculo_sel_txt='';
+  ['moto','auto','otros'].forEach(function(id){
+    document.getElementById('veh-'+id).className='vehiculo-item';
+  });
+  document.getElementById('veh-'+v).classList.add('selected');
+  document.getElementById('vehiculo-err').classList.remove('show');
+  var wrap=document.getElementById('veh-otros-wrap');
+  var txt=document.getElementById('veh-otros-texto');
+  if(v==='otros'){
+    wrap.style.display='block';
+    setTimeout(function(){txt.focus();},80);
+  } else {
+    wrap.style.display='none';
+    txt.value='';
+    var secTipo=document.getElementById('f-sec-tipo');
+    if(secTipo) secTipo.value = v==='moto'?'Moto':'Auto';
+  }
+}
+
+function setTipoActa(tipo){
+  form.tipo_acta=tipo;
+  document.getElementById('tipo-multa').className='tipo-item';
+  document.getElementById('tipo-secuestro').className='tipo-item';
+  document.getElementById('tipo-err').classList.remove('show');
+  if(tipo==='multa'){
+    document.getElementById('tipo-multa').classList.add('selected-multa');
+    document.getElementById('secuestro-section').classList.remove('visible');
+    document.getElementById('documentacion-section').style.display='block';
+  } else {
+    document.getElementById('tipo-secuestro').classList.add('selected-secuestro');
+    document.getElementById('secuestro-section').classList.add('visible');
+    document.getElementById('documentacion-section').style.display='none';
+  }
+}
+
+function setDoc(c,v,el){
+  form[c]=v;
+  var s=el.parentNode.querySelectorAll('.tg-btn');
+  for(var i=0;i<s.length;i++)s[i].classList.remove('si','no');
+  el.classList.add(v==='SI'?'si':'no');
+}
+function setSecuestroDoc(c,v,el){
+  form[c]=v;
+  var s=el.parentNode.querySelectorAll('.tg-btn');
+  for(var i=0;i<s.length;i++)s[i].classList.remove('si','no');
+  el.classList.add(v==='SI'?'si':'no');
+}
+
+function limpiarValidacion(){
+  document.querySelectorAll('.field-inp.invalid').forEach(function(el){el.classList.remove('invalid');});
+  document.getElementById('val-banner').classList.remove('show');
+  document.getElementById('contexto-err').classList.remove('show');
+  document.getElementById('vehiculo-err').classList.remove('show');
+  document.getElementById('tipo-err').classList.remove('show');
+}
+function validar(){
+  var errores=[];limpiarValidacion();
+  function req(id,label){
+    var el=document.getElementById(id);
+    if(!el)return;
+    if(!el.value.trim()){el.classList.add('invalid');errores.push(label);}
+  }
+  if(!form.contexto){document.getElementById('contexto-err').classList.add('show');errores.push('Contexto (Operativo o Siniestro)');}
+  if(!form.tipo_vehiculo_sel){document.getElementById('vehiculo-err').classList.add('show');errores.push('Tipo de vehículo');}
+  else if(form.tipo_vehiculo_sel==='otros'){
+    var otrosTxt=document.getElementById('veh-otros-texto').value.trim();
+    if(!otrosTxt){document.getElementById('veh-otros-texto').classList.add('invalid');errores.push('Especificá el tipo de vehículo en "Otros"');}
+    else{form.tipo_vehiculo_sel_txt=otrosTxt;}
+  }
+  if(!form.tipo_acta){document.getElementById('tipo-err').classList.add('show');errores.push('Tipo de acta');}
+  req('f-nro-acta','N° de acta');
+  req('f-fecha','Fecha del hecho');
+  req('f-hora','Hora del hecho');
+  req('f-direccion','Dirección del hecho');
+  req('f-conductor','Apellido y nombre del conductor');
+  req('f-dni','DNI del conductor');
+  if(form.tipo_acta==='secuestro'){
+    req('f-sec-tipo','Tipo de vehículo');
+    req('f-sec-marca','Marca del vehículo');
+    req('f-sec-chasis','Número de chasis');
+  }
+  if(errores.length>0){
+    document.getElementById('val-lista').innerHTML=errores.map(function(e){return '<li>'+e+'</li>';}).join('');
+    document.getElementById('val-banner').classList.add('show');
+    var first=document.querySelector('.field-inp.invalid');
+    if(first)first.scrollIntoView({behavior:'smooth',block:'center'});
+    return false;
+  }
+  return true;
+}
+
+function guardarActa(){
+  if(!validar())return;
+  var now=new Date(),n=rows.length+1;
+  var nroActa=document.getElementById('f-nro-acta').value.trim();
+  var row={
+    n:n,
+    fecha_registro:String(now.getDate()).padStart(2,'0')+'/'+(now.getMonth()+1)+'/'+now.getFullYear(),
+    hora_registro:String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0'),
+    inspector:document.getElementById('act-inspector').value.trim()||'--',
+    legajo_insp:document.getElementById('act-legajo-insp').value.trim()||'--',
+    secretario:document.getElementById('act-secretario').value.trim()||'--',
+    legajo_sec:document.getElementById('act-legajo-sec').value.trim()||'--',
+    tipo_acta:form.tipo_acta==='multa'?'MULTA':'SECUESTRO + MULTA',
+    contexto:form.contexto.toUpperCase(),
+    tipo_vehiculo_sel: form.tipo_vehiculo_sel==='otros'
+      ? (form.tipo_vehiculo_sel_txt||'Otros')
+      : (form.tipo_vehiculo_sel==='moto'?'Moto':'Auto'),
+    nro_acta:nroActa,
+    fecha_hecho:document.getElementById('f-fecha').value,
+    hora_hecho:document.getElementById('f-hora').value,
+    direccion:document.getElementById('f-direccion').value.trim(),
+    conductor:document.getElementById('f-conductor').value.trim(),
+    dni:document.getElementById('f-dni').value.trim(),
+    domicilio:document.getElementById('f-domicilio').value.trim()||'--',
+    descripcion:document.getElementById('f-descripcion').value.trim()||'--'
+  };
+  if(form.tipo_acta==='multa'){
+    row.registro=form.registro||'--';row.casco=form.casco||'--';row.seguro=form.seguro||'--';
+    row.tipo_vehiculo='--';row.marca='--';row.modelo='--';row.chasis='--';row.color='--';row.dominio='--';
+    row.niega_firmar='--';row.fuga='--';
+  } else {
+    row.registro='--';row.casco='--';row.seguro='--';
+    row.tipo_vehiculo=document.getElementById('f-sec-tipo').value.trim()||'--';
+    row.marca=document.getElementById('f-sec-marca').value.trim()||'--';
+    row.modelo=document.getElementById('f-sec-modelo').value.trim()||'--';
+    row.chasis=document.getElementById('f-sec-chasis').value.trim()||'--';
+    row.color=document.getElementById('f-sec-color').value.trim()||'--';
+    row.dominio=document.getElementById('f-sec-dominio').value.trim()||'--';
+    row.niega_firmar=form.niega_firmar||'--';
+    row.fuga=form.fuga||'--';
+  }
+  rows.push(row);
+  try{localStorage.setItem(RKEY,JSON.stringify(rows));}catch(e){}
+  try{fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({},row,{accion:'acta'}))});}catch(e){}
+  renderStats();renderLog();limpiar(true);
+  showToast('Acta #'+nroActa+' registrada','ok');
+}
+
+function pedirLimpiar(){document.getElementById('modal-limpiar').classList.add('show');}
+function limpiar(sinModal){
+  if(!sinModal)document.getElementById('modal-limpiar').classList.remove('show');
+  limpiarValidacion();
+  form={contexto:'',tipo_vehiculo_sel:'',tipo_vehiculo_sel_txt:'',tipo_acta:'',registro:'',casco:'',seguro:'',niega_firmar:'',fuga:''};
+  document.getElementById('ctx-operativo').className='contexto-item';
+  document.getElementById('ctx-siniestro').className='contexto-item';
+  ['moto','auto','otros'].forEach(function(id){document.getElementById('veh-'+id).className='vehiculo-item';});
+  document.getElementById('veh-otros-wrap').style.display='none';
+  document.getElementById('veh-otros-texto').value='';
+  document.getElementById('vehiculo-err').classList.remove('show');
+  document.getElementById('tipo-multa').className='tipo-item';
+  document.getElementById('tipo-secuestro').className='tipo-item';
+  document.getElementById('secuestro-section').classList.remove('visible');
+  document.getElementById('documentacion-section').style.display='block';
+  setFechaHoraActual();
+  ['f-nro-acta','f-direccion','f-conductor','f-dni','f-domicilio','f-descripcion',
+   'f-sec-tipo','f-sec-marca','f-sec-modelo','f-sec-chasis','f-sec-color','f-sec-dominio']
+  .forEach(function(id){document.getElementById(id).value='';});
+  document.querySelectorAll('.tg-btn').forEach(function(b){b.classList.remove('si','no');});
+}
+
+function cerrarModal(cual){document.getElementById('modal-'+cual).classList.remove('show');if(cual==='borrar')pendingDelete=null;}
+function pedirBorrar(n){pendingDelete=n;document.getElementById('modal-borrar').classList.add('show');}
+function confirmarBorrar(){
+  if(pendingDelete===null){cerrarModal('borrar');return;}
+  rows=rows.filter(function(r){return r.n!==pendingDelete;});
+  try{localStorage.setItem(RKEY,JSON.stringify(rows));}catch(e){}
+  cerrarModal('borrar');renderStats();renderLog();
+  showToast('Acta eliminada','ok');
+}
+
+function renderStats(){
+  var s=0,h=0,today=new Date(),hs=String(today.getDate()).padStart(2,"0")+"/"+(today.getMonth()+1)+"/"+today.getFullYear();
+  for(var i=0;i<rows.length;i++){if(rows[i].tipo_acta==="SECUESTRO + MULTA")s++;if(rows[i].fecha_registro===hs)h++;}
+  document.getElementById("st-total").textContent=rows.length;
+  document.getElementById("st-secuestro").textContent=s;
+  document.getElementById("st-hoy").textContent=h;
+}
+function renderLog(){
+  var wrap=document.getElementById("log-wrap"),list=document.getElementById("log-list");
+  if(rows.length===0){wrap.style.display="none";return;}
+  wrap.style.display="block";var html="";
+  for(var i=rows.length-1;i>=0;i--){
+    var r=rows[i],chips='<span class="chip a">#'+r.nro_acta+'</span>';
+    if(r.contexto)chips+='<span class="chip '+(r.contexto==="OPERATIVO"?'g':'b')+'">'+r.contexto+'</span>';
+    if(r.tipo_acta==="SECUESTRO + MULTA"){
+      chips+='<span class="chip r">SECUESTRO</span>';
+      if(r.dominio!=="--")chips+='<span class="chip b">'+r.dominio+'</span>';
+      if(r.fuga==="SI")chips+='<span class="chip r">FUGA</span>';
+    } else {
+      chips+='<span class="chip g">MULTA</span>';
+      if(r.registro==="NO")chips+='<span class="chip r">SIN REGISTRO</span>';
+      if(r.casco==="NO")chips+='<span class="chip r">SIN CASCO</span>';
+      if(r.seguro==="NO")chips+='<span class="chip r">SIN SEGURO</span>';
+    }
+    chips+='<span class="chip">'+r.hora_hecho+'</span>';
+    if(r.inspector!=="--")chips+='<span class="chip t">'+r.inspector+'</span>';
+    html+='<div class="log-item"><div class="chips">'+chips+'</div><button class="del-btn" onclick="pedirBorrar('+r.n+')">✕</button></div>';
+  }
+  list.innerHTML=html;
+}
+
+function exportCSV(){
+  if(rows.length===0){showToast("No hay registros aún","err");return;}
+  var hdrs=["N","Fecha Registro","Hora Registro","Inspector","Legajo Inspector","Secretario","Legajo Secretario","Contexto","Tipo Vehículo Sel.","Tipo Acta","N° Acta","Fecha Hecho","Hora Hecho","Dirección","Conductor","DNI","Domicilio","Tipo Vehículo","Marca","Modelo","Chasis","Color","Dominio","Registro","Casco","Seguro","Niega Firmar","Fuga","Descripción"];
+  var lines=[hdrs.join(",")];
+  for(var i=0;i<rows.length;i++){
+    var r=rows[i];
+    var v=[r.n,r.fecha_registro,r.hora_registro,r.inspector,r.legajo_insp,r.secretario,r.legajo_sec,r.contexto||"--",r.tipo_vehiculo_sel||"--",r.tipo_acta,r.nro_acta,r.fecha_hecho,r.hora_hecho,r.direccion,r.conductor,r.dni,r.domicilio,r.tipo_vehiculo||"--",r.marca||"--",r.modelo||"--",r.chasis||"--",r.color||"--",r.dominio||"--",r.registro,r.casco,r.seguro,r.niega_firmar,r.fuga,r.descripcion];
+    lines.push(v.map(function(x){return"""+String(x).replace(/"/g,"""")+""";}).join(","));
+  }
+  var blob=new Blob(["﻿"+lines.join("
+")],{type:"text/csv;charset=utf-8;"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url;a.download="actas_cem_"+new Date().toISOString().slice(0,10)+".csv";a.click();
+  URL.revokeObjectURL(url);showToast("CSV exportado","ok");
+}
+
+function showToast(msg,tipo){
+  var t=document.getElementById("toast");
+  t.textContent=msg;
+  t.className="toast show "+(tipo||"");
+  setTimeout(function(){t.className="toast";},2800);
+}
+
+init();
+</script>
+</body>
+</html>
