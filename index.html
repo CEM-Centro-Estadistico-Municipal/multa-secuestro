@@ -483,7 +483,7 @@ async function cargarDatos() {
 
     TODOS = filas.map(r => ({
       n:           r['N'] || '',
-      fecha:       r['Fecha Registro'] || r['Fecha Hecho'] || '',
+      fecha:       r['Fecha Hecho'] || r['Fecha Registro'] || '',
       hora:        r['Hora Hecho'] || r['Hora Registro'] || '',
       inspector:   normInspector(r['Inspector'] || r['Legajo Inspector'] || ''),
       tipo:        (r['Tipo Acta'] || '').toUpperCase().includes('SECU') ? 'SECUESTRO' : 'MULTA',
@@ -491,7 +491,7 @@ async function cargarDatos() {
       marca:       normMarca(r['Modelo'] || r['Marca'] || ''),
       dominio:     r['Dominio'] || '',
       desc:        r['Descripcion'] || '',
-      mes:         getMes(r['Fecha Registro'] || r['Fecha Hecho'] || ''),
+      mes:         getMes(r['Fecha Hecho'] || r['Fecha Registro'] || ''),
       horaNum:     getHora(r['Hora Hecho'] || r['Hora Registro'] || ''),
       infraccion:  detectInfraccion(r['Descripcion'] || ''),
     }));
