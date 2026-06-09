@@ -624,7 +624,6 @@ function setTipoActa(tipo){
   } else {
     document.getElementById('tipo-secuestro').classList.add('selected-secuestro');
     document.getElementById('secuestro-section').classList.add('visible');
-    document.getElementById('documentacion-section').style.display='none';
   }
 }
 
@@ -724,7 +723,7 @@ function guardarActa(){
     row.tipo_vehiculo='--';row.marca='--';row.modelo='--';row.chasis='--';row.color='--';row.dominio='--';
     row.niega_firmar='--';row.fuga='--';
   } else {
-    row.registro='--';row.casco='--';row.seguro='--';
+    row.registro=form.registro||'--';row.casco=form.casco||'--';row.seguro=form.seguro||'--';
     row.tipo_vehiculo=getTipoVehiculoLabel();
     row.marca=getMarcaVehiculo();
     row.modelo=getModeloVehiculo();
