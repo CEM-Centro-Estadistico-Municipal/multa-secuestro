@@ -10,49 +10,18 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
 :root {
-  --cem-azul-50: #e8eef5;
-  --cem-azul-100: #c5d8e8;
-  --cem-azul-200: #9ebdd8;
-  --cem-azul-300: #78a2c8;
-  --cem-azul-400: #5287b8;
-  --cem-azul-500: #2c6ca8;
-  --cem-azul-600: #1a5a96;
-  --cem-azul-700: #0e5a9e;
-  --cem-azul-800: #0a3a68;
-  --cem-azul-900: #062a4e;
-  --cem-ocre-50: #f5efe4;
-  --cem-ocre-100: #e8d9c2;
-  --cem-ocre-200: #d4bf9a;
-  --cem-ocre-300: #c0a572;
-  --cem-ocre-400: #ac8b4a;
-  --cem-ocre-500: #b8863d;
-  --cem-ocre-600: #8f6a2e;
-  --cem-ocre-700: #664e21;
-  --cem-ocre-800: #3d3214;
-  --cem-ocre-900: #141607;
-  --cem-papel: #f8f5ee;
-  --cem-papel-2: #eee6d5;
-  --cem-tinta: #171614;
-  --cem-tinta-sec: #5a5248;
-  --cem-tinta-ter: #8a8070;
-  --cem-verde: #2f7d32;
-  --cem-rojo: #a8322c;
-  --cem-amarillo: #c9971a;
-  --bg: var(--cem-papel);
-  --surface: #ffffff;
-  --surface-2: var(--cem-papel-2);
-  --border: #d4cdc0;
-  --border-focus: var(--cem-azul-400);
-  --font-sans: "IBM Plex Sans", sans-serif;
-  --font-serif: "IBM Plex Serif", serif;
-  --font-mono: "IBM Plex Mono", monospace;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-pill: 999px;
-  --shadow-1: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 1px rgba(15,23,42,0.06);
-  --shadow-2: 0 4px 12px rgba(15, 23, 42, 0.08);
-  --shadow-3: 0 12px 32px rgba(15, 23, 42, 0.12);
+  --cem-azul-50: #e8eef5;--cem-azul-100: #c5d8e8;--cem-azul-200: #9ebdd8;--cem-azul-300: #78a2c8;
+  --cem-azul-400: #5287b8;--cem-azul-500: #2c6ca8;--cem-azul-600: #1a5a96;--cem-azul-700: #0e5a9e;
+  --cem-azul-800: #0a3a68;--cem-azul-900: #062a4e;
+  --cem-ocre-400: #ac8b4a;--cem-ocre-500: #b8863d;
+  --cem-papel: #f8f5ee;--cem-papel-2: #eee6d5;
+  --cem-tinta: #171614;--cem-tinta-sec: #5a5248;--cem-tinta-ter: #8a8070;
+  --cem-verde: #2f7d32;--cem-rojo: #a8322c;--cem-amarillo: #c9971a;
+  --bg: var(--cem-papel);--surface: #ffffff;--border: #d4cdc0;--border-focus: var(--cem-azul-400);
+  --font-sans: "IBM Plex Sans", sans-serif;--font-serif: "IBM Plex Serif", serif;--font-mono: "IBM Plex Mono", monospace;
+  --radius-sm: 4px;--radius-md: 8px;--radius-lg: 12px;--radius-pill: 999px;
+  --shadow-1: 0 1px 2px rgba(15,23,42,0.04),0 1px 1px rgba(15,23,42,0.06);
+  --shadow-2: 0 4px 12px rgba(15,23,42,0.08);--shadow-3: 0 12px 32px rgba(15,23,42,0.12);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:var(--font-sans);background:var(--bg);color:var(--cem-tinta);min-height:100vh;padding-bottom:96px;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;}
@@ -88,26 +57,36 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--cem-tinta);mi
 .field-inp.short{width:160px;}
 .field-inp.invalid{border-color:var(--cem-rojo)!important;background:rgba(168,50,44,0.04)!important;box-shadow:0 0 0 2px rgba(168,50,44,0.12)!important;}
 textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
+select.field-inp{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8070' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer;}
 .act-grid{display:grid;grid-template-columns:1fr 1fr;}
 .act-field{padding:12px 18px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);}
 .act-field:nth-child(2n){border-right:none;}.act-field:nth-last-child(-n+2){border-bottom:none;}
 .act-field-lbl{font-family:var(--font-mono);font-size:10px;color:var(--cem-tinta-ter);margin-bottom:6px;letter-spacing:0.04em;text-transform:uppercase;}
-.contexto-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:18px;}
-.contexto-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 14px;border:2px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);background:var(--cem-papel);}
+
+/* Contexto: 3 opciones en grilla 3 col */
+.contexto-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:18px;}
+.contexto-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 10px;border:2px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all 0.18s cubic-bezier(0.2,0.8,0.2,1);background:var(--cem-papel);}
 .contexto-item:hover{border-color:var(--cem-azul-300);box-shadow:var(--shadow-2);}
 .contexto-item:active{transform:scale(0.98);transition-duration:0.08s;}
 .contexto-item.selected-operativo{background:rgba(47,125,50,0.08);border-color:var(--cem-verde);}
 .contexto-item.selected-siniestro{background:rgba(14,90,158,0.08);border-color:var(--cem-azul-600);}
-.contexto-icon{width:28px;height:28px;color:var(--cem-tinta-ter);}
+.contexto-item.selected-otros{background:rgba(201,151,26,0.08);border-color:var(--cem-amarillo);}
+.contexto-icon{width:26px;height:26px;color:var(--cem-tinta-ter);}
 .contexto-item.selected-operativo .contexto-icon{color:var(--cem-verde);}
 .contexto-item.selected-siniestro .contexto-icon{color:var(--cem-azul-600);}
-.contexto-lbl{font-family:var(--font-serif);font-size:14px;font-weight:700;letter-spacing:0.04em;color:var(--cem-tinta-sec);text-align:center;}
+.contexto-item.selected-otros .contexto-icon{color:var(--cem-amarillo);}
+.contexto-lbl{font-family:var(--font-serif);font-size:13px;font-weight:700;letter-spacing:0.04em;color:var(--cem-tinta-sec);text-align:center;}
 .contexto-item.selected-operativo .contexto-lbl{color:var(--cem-verde);}
 .contexto-item.selected-siniestro .contexto-lbl{color:var(--cem-azul-700);}
+.contexto-item.selected-otros .contexto-lbl{color:#8a6a00;}
 .contexto-err{font-family:var(--font-mono);font-size:12px;color:var(--cem-rojo);padding:0 18px 12px;display:none;}
 .contexto-err.show{display:block;}
+.contexto-otros-wrap{display:none;padding:0 18px 18px;}
+.contexto-otros-wrap.show{display:block;}
+
+/* Vehiculo */
 .vehiculo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:18px;}
-.vehiculo-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:22px 12px;border:2px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);background:var(--cem-papel);}
+.vehiculo-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:22px 12px;border:2px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all 0.18s cubic-bezier(0.2,0.8,0.2,1);background:var(--cem-papel);}
 .vehiculo-item:hover{border-color:var(--cem-azul-300);box-shadow:var(--shadow-2);}
 .vehiculo-item:active{transform:scale(0.98);transition-duration:0.08s;}
 .vehiculo-item.selected{background:rgba(14,90,158,0.08);border-color:var(--cem-azul-600);}
@@ -117,8 +96,17 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
 .vehiculo-item.selected .vehiculo-lbl{color:var(--cem-azul-700);}
 .vehiculo-err{font-family:var(--font-mono);font-size:12px;color:var(--cem-rojo);padding:0 18px 12px;display:none;}
 .vehiculo-err.show{display:block;}
+.vehiculo-extra{display:none;padding:0 18px 18px;border-top:1px solid var(--border);}
+.vehiculo-extra.show{display:block;}
+.vehiculo-extra-inner{background:var(--cem-azul-50);border:1px solid var(--cem-azul-200);border-radius:var(--radius-md);padding:14px 16px;display:flex;flex-direction:column;gap:12px;}
+.vehiculo-extra-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.vex-label{font-family:var(--font-mono);font-size:10px;color:var(--cem-azul-700);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;font-weight:500;display:block;}
+.dominio-wrap{padding:0 18px 18px;border-top:1px solid var(--border);}
+.dominio-inner{background:var(--cem-papel-2);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;}
+
+/* Tipo acta */
 .tipo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:18px;}
-.tipo-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 14px;border:2px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);background:var(--cem-papel);}
+.tipo-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 14px;border:2px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all 0.18s cubic-bezier(0.2,0.8,0.2,1);background:var(--cem-papel);}
 .tipo-item:hover{border-color:var(--cem-azul-300);box-shadow:var(--shadow-2);}
 .tipo-item:active{transform:scale(0.98);transition-duration:0.08s;}
 .tipo-item.selected-multa{background:rgba(201,151,26,0.08);border-color:var(--cem-amarillo);}
@@ -171,9 +159,9 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
 .chip.t{background:var(--cem-azul-50);border-color:var(--cem-azul-200);color:var(--cem-azul-700);}
 .del-btn{width:30px;height:30px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--cem-tinta-ter);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.12s;}
 .del-btn:hover{border-color:var(--cem-rojo);color:var(--cem-rojo);background:rgba(168,50,44,0.06);}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--cem-azul-800);color:#fff;border-radius:var(--radius-pill);padding:12px 24px;font-family:var(--font-sans);font-size:14px;font-weight:600;letter-spacing:0.02em;transition:transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);z-index:100;white-space:nowrap;pointer-events:none;box-shadow:var(--shadow-3);}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--cem-azul-800);color:#fff;border-radius:var(--radius-pill);padding:12px 24px;font-family:var(--font-sans);font-size:14px;font-weight:600;letter-spacing:0.02em;transition:transform 0.3s cubic-bezier(0.2,0.8,0.2,1);z-index:100;white-space:nowrap;pointer-events:none;box-shadow:var(--shadow-3);}
 .toast.show{transform:translateX(-50%) translateY(0);}
-.toast.ok{background:var(--cem-verde);color:#fff;}.toast.err{background:var(--cem-rojo);color:#fff;}
+.toast.ok{background:var(--cem-verde);}.toast.err{background:var(--cem-rojo);}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(23,22,20,0.5);z-index:200;align-items:flex-end;justify-content:center;}
 .modal-overlay.show{display:flex;}
 .modal{background:var(--surface);border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:24px;width:100%;max-width:480px;box-shadow:var(--shadow-3);}
@@ -185,10 +173,17 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
 .modal-btn.cancel:hover{border-color:var(--cem-azul-300);color:var(--cem-azul-700);}
 .modal-btn.confirm{background:var(--cem-rojo);color:#fff;}
 .modal-btn.confirm:hover{background:#8a2824;}
-@media (max-width:640px){.container{padding:14px;gap:14px;}.hdr-inner{padding:12px 14px;}.hdr-title{font-size:17px;}.hdr-logo-top{font-size:18px;}.stats{padding:14px 14px;}.st-val{font-size:24px;}.contexto-grid,.tipo-grid{grid-template-columns:1fr;}.vehiculo-grid{grid-template-columns:1fr;}.act-grid{grid-template-columns:1fr;}.act-field{border-right:none;}.actions{grid-template-columns:1fr;}.btn-save{grid-column:1/-1;}}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;}}
+@media (max-width:640px){
+  .container{padding:14px;gap:14px;}.hdr-inner{padding:12px 14px;}.hdr-title{font-size:17px;}.hdr-logo-top{font-size:18px;}
+  .stats{padding:14px 14px;}.st-val{font-size:24px;}
+  .contexto-grid{grid-template-columns:1fr;}
+  .vehiculo-grid{grid-template-columns:1fr;}.vehiculo-extra-row{grid-template-columns:1fr;}
+  .tipo-grid{grid-template-columns:1fr;}
+  .act-grid{grid-template-columns:1fr;}.act-field{border-right:none;}
+  .actions{grid-template-columns:1fr;}.btn-save{grid-column:1/-1;}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important;}}
 </style>
-<base target="_blank">
 </head>
 <body>
 <div class="hdr">
@@ -214,6 +209,7 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
     <div class="st-item"><div class="st-val g" id="st-hoy">0</div><div class="st-lbl">Hoy</div></div>
   </div>
 
+  <!-- ACTUANTES -->
   <div class="card">
     <div class="card-hdr">
       <i data-lucide="shield-check" class="card-hdr-icon"></i>
@@ -227,6 +223,7 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
     </div>
   </div>
 
+  <!-- CONTEXTO -->
   <div class="card">
     <div class="card-hdr">
       <i data-lucide="map-pin" class="card-hdr-icon"></i>
@@ -242,10 +239,21 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
         <i data-lucide="alert-triangle" class="contexto-icon"></i>
         <span class="contexto-lbl">SINIESTRO</span>
       </div>
+      <div class="contexto-item" id="ctx-otros" onclick="setContexto('otros')">
+        <i data-lucide="more-horizontal" class="contexto-icon"></i>
+        <span class="contexto-lbl">OTROS</span>
+      </div>
+    </div>
+    <div class="contexto-otros-wrap" id="contexto-otros-wrap">
+      <div style="background:rgba(201,151,26,0.06);border:1px solid rgba(201,151,26,0.4);border-radius:var(--radius-md);padding:14px 16px;">
+        <label class="vex-label" style="color:#8a6a00;">Especificá el contexto <span style="color:var(--cem-rojo)">*</span></label>
+        <input class="field-inp" id="ctx-otros-texto" placeholder="Ej: Control vehicular, denuncia, patrullaje..." style="background:#fff;">
+      </div>
     </div>
     <div class="contexto-err" id="contexto-err">Seleccioná el contexto para continuar</div>
   </div>
 
+  <!-- TIPO DE VEHÍCULO -->
   <div class="card">
     <div class="card-hdr">
       <i data-lucide="truck" class="card-hdr-icon"></i>
@@ -266,18 +274,90 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
         <span class="vehiculo-lbl">OTROS</span>
       </div>
     </div>
-    <div id="veh-otros-wrap" style="display:none;padding:0 18px 18px;">
-      <div style="background:var(--cem-azul-50);border:1px solid var(--cem-azul-200);border-radius:var(--radius-md);padding:14px 16px;margin-top:4px;">
-        <label style="display:block;font-family:var(--font-mono);font-size:10px;color:var(--cem-azul-700);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;font-weight:500;">
-          Tipo de vehículo específico <span style="color:var(--cem-rojo)">*</span>
-        </label>
-        <input class="field-inp" id="veh-otros-texto" placeholder="Ej: Camioneta, camión, cuatriciclo, bicicleta..." oninput="form.tipo_vehiculo_sel_txt=this.value.trim()" style="background:#fff;">
-        <p style="font-size:12px;color:var(--cem-tinta-ter);margin-top:8px;line-height:1.4;">Especificá el tipo exacto de vehículo para el registro del acta.</p>
+
+    <!-- Extra: marca + modelo según tipo -->
+    <div class="vehiculo-extra" id="veh-extra-moto">
+      <div style="padding-top:14px;">
+        <div class="vehiculo-extra-inner">
+          <div class="vehiculo-extra-row">
+            <div>
+              <label class="vex-label">Marca</label>
+              <select class="field-inp" id="veh-marca-moto" onchange="onMarcaMotoChange()" style="background:#fff;">
+                <option value="">— Seleccioná —</option>
+                <option>Honda</option><option>Yamaha</option><option>Zanella</option><option>Motomel</option>
+                <option>Gilera</option><option>Corven</option><option>Beta</option><option>Kawasaki</option>
+                <option>Suzuki</option><option>Bajaj</option><option>TVS</option><option>Mondial</option>
+                <option>Guerrero</option><option>Kymco</option><option>Otras</option>
+              </select>
+              <div id="veh-marca-moto-otro-wrap" style="display:none;margin-top:8px;">
+                <input class="field-inp" id="veh-marca-moto-otro" placeholder="Especificá la marca..." style="background:#fff;">
+              </div>
+            </div>
+            <div>
+              <label class="vex-label">Modelo <span style="font-weight:400;opacity:0.7">(opcional)</span></label>
+              <input class="field-inp" id="veh-modelo-moto" placeholder="Ej: Wave 110, Crypton..." style="background:#fff;">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="vehiculo-extra" id="veh-extra-auto">
+      <div style="padding-top:14px;">
+        <div class="vehiculo-extra-inner">
+          <div class="vehiculo-extra-row">
+            <div>
+              <label class="vex-label">Marca</label>
+              <select class="field-inp" id="veh-marca-auto" onchange="onMarcaAutoChange()" style="background:#fff;">
+                <option value="">— Seleccioná —</option>
+                <option>Volkswagen</option><option>Renault</option><option>Chevrolet</option><option>Ford</option>
+                <option>Fiat</option><option>Peugeot</option><option>Toyota</option><option>Citroën</option>
+                <option>Nissan</option><option>Hyundai</option><option>Kia</option><option>Honda</option>
+                <option>Jeep</option><option>Dodge</option><option>Mercedes-Benz</option><option>BMW</option>
+                <option>Audi</option><option>Otras</option>
+              </select>
+              <div id="veh-marca-auto-otro-wrap" style="display:none;margin-top:8px;">
+                <input class="field-inp" id="veh-marca-auto-otro" placeholder="Especificá la marca..." style="background:#fff;">
+              </div>
+            </div>
+            <div>
+              <label class="vex-label">Modelo <span style="font-weight:400;opacity:0.7">(opcional)</span></label>
+              <input class="field-inp" id="veh-modelo-auto" placeholder="Ej: Gol, Sandero, Corsa..." style="background:#fff;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vehiculo-extra" id="veh-extra-otros">
+      <div style="padding-top:14px;">
+        <div class="vehiculo-extra-inner">
+          <div class="vehiculo-extra-row">
+            <div>
+              <label class="vex-label">Tipo de vehículo <span style="color:var(--cem-rojo)">*</span></label>
+              <input class="field-inp" id="veh-otros-texto" placeholder="Ej: Camioneta, camión, cuatriciclo..." style="background:#fff;" oninput="form.tipo_vehiculo_sel_txt=this.value.trim()">
+            </div>
+            <div>
+              <label class="vex-label">Marca / Modelo <span style="font-weight:400;opacity:0.7">(opcional)</span></label>
+              <input class="field-inp" id="veh-otros-marca" placeholder="Ej: Ford Ranger..." style="background:#fff;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dominio -->
+    <div class="dominio-wrap" id="dominio-wrap" style="display:none;">
+      <div class="dominio-inner">
+        <label class="vex-label" style="color:var(--cem-tinta-sec);">Dominio / Patente</label>
+        <input class="field-inp" id="veh-dominio" placeholder="Ej: AB123CD · o 'no posee'" style="background:#fff;text-transform:uppercase;" oninput="this.value=this.value.toUpperCase()">
+      </div>
+    </div>
+
     <div class="vehiculo-err" id="vehiculo-err">Seleccioná el tipo de vehículo para continuar</div>
   </div>
 
+  <!-- TIPO DE ACTA -->
   <div class="card">
     <div class="card-hdr">
       <i data-lucide="file-text" class="card-hdr-icon"></i>
@@ -297,6 +377,7 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
     <div class="tipo-err" id="tipo-err">Seleccioná el tipo de acta para continuar</div>
   </div>
 
+  <!-- SECUESTRO -->
   <div class="card secuestro-section" id="secuestro-section">
     <div class="card-hdr">
       <i data-lucide="lock" class="card-hdr-icon" style="color:var(--cem-rojo);"></i>
@@ -342,6 +423,7 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
     </div>
   </div>
 
+  <!-- DATOS DEL ACTA -->
   <div class="card">
     <div class="card-hdr">
       <i data-lucide="clipboard-list" class="card-hdr-icon"></i>
@@ -354,6 +436,7 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
     <div class="field col"><span class="field-lbl">Dirección del hecho <span class="req-mark">*</span></span><input class="field-inp" type="text" id="f-direccion" placeholder="Calle, intersección, referencia..."></div>
   </div>
 
+  <!-- CONDUCTOR -->
   <div class="card">
     <div class="card-hdr">
       <i data-lucide="user" class="card-hdr-icon"></i>
@@ -365,6 +448,7 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
     <div class="field col"><span class="field-lbl">Domicilio</span><input class="field-inp" type="text" id="f-domicilio" placeholder="Dirección completa del infractor"></div>
   </div>
 
+  <!-- DOCUMENTACIÓN -->
   <div class="card" id="documentacion-section">
     <div class="card-hdr">
       <i data-lucide="id-card" class="card-hdr-icon"></i>
@@ -377,6 +461,7 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
     </div>
   </div>
 
+  <!-- OBSERVACIONES -->
   <div class="card">
     <div class="card-hdr">
       <i data-lucide="align-left" class="card-hdr-icon"></i>
@@ -435,7 +520,6 @@ textarea.field-inp{resize:vertical;min-height:80px;line-height:1.5;}
     </div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script>
@@ -449,8 +533,9 @@ function init(){
   try{var r=localStorage.getItem(RKEY);if(r)rows=JSON.parse(r);}catch(e){}
   setFechaHoraActual();actualizarFecha();setInterval(actualizarFecha,30000);
   renderStats();renderLog();
-  if(typeof lucide !== 'undefined'){lucide.createIcons();}
+  if(typeof lucide!=='undefined'){lucide.createIcons();}
 }
+
 function setFechaHoraActual(){
   var now=new Date();
   document.getElementById('f-fecha').value=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
@@ -463,37 +548,90 @@ function actualizarFecha(){
   document.getElementById('hdr-date').textContent=dias[now.getDay()]+' '+now.getDate()+' de '+meses[now.getMonth()]+' · '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
 }
 
+/* ---- CONTEXTO ---- */
 function setContexto(v){
   form.contexto=v;
-  document.getElementById('ctx-operativo').className='contexto-item';
-  document.getElementById('ctx-siniestro').className='contexto-item';
-  document.getElementById('ctx-operativo').classList.toggle('selected-operativo', v==='operativo');
-  document.getElementById('ctx-siniestro').classList.toggle('selected-siniestro', v==='siniestro');
-  document.getElementById('contexto-err').classList.remove('show');
-}
-
-function setTipoVehiculo(v){
-  form.tipo_vehiculo_sel=v;
-  form.tipo_vehiculo_sel_txt='';
-  ['moto','auto','otros'].forEach(function(id){
-    document.getElementById('veh-'+id).className='vehiculo-item';
+  ['operativo','siniestro','otros'].forEach(function(id){
+    document.getElementById('ctx-'+id).className='contexto-item';
   });
-  document.getElementById('veh-'+v).classList.add('selected');
-  document.getElementById('vehiculo-err').classList.remove('show');
-  var wrap=document.getElementById('veh-otros-wrap');
-  var txt=document.getElementById('veh-otros-texto');
+  document.getElementById('ctx-'+v).classList.add('selected-'+v);
+  document.getElementById('contexto-err').classList.remove('show');
+  var otrosWrap=document.getElementById('contexto-otros-wrap');
   if(v==='otros'){
-    wrap.style.display='block';
-    setTimeout(function(){txt.focus();},100);
+    otrosWrap.classList.add('show');
+    setTimeout(function(){document.getElementById('ctx-otros-texto').focus();},80);
   } else {
-    wrap.style.display='none';
-    txt.value='';
-    form.tipo_vehiculo_sel_txt='';
-    var secTipo=document.getElementById('f-sec-tipo');
-    if(secTipo) secTipo.value = v==='moto'?'Moto':'Auto';
+    otrosWrap.classList.remove('show');
+    document.getElementById('ctx-otros-texto').value='';
   }
 }
 
+/* ---- TIPO VEHÍCULO ---- */
+function setTipoVehiculo(v){
+  form.tipo_vehiculo_sel=v;
+  ['moto','auto','otros'].forEach(function(id){
+    document.getElementById('veh-'+id).className='vehiculo-item';
+    document.getElementById('veh-extra-'+id).classList.remove('show');
+  });
+  document.getElementById('veh-'+v).classList.add('selected');
+  document.getElementById('veh-extra-'+v).classList.add('show');
+  document.getElementById('vehiculo-err').classList.remove('show');
+  document.getElementById('dominio-wrap').style.display='block';
+  // Pre-fill sec-tipo si está visible
+  var secTipo=document.getElementById('f-sec-tipo');
+  if(secTipo && v!=='otros') secTipo.value=v==='moto'?'Moto':'Auto';
+  if(v==='otros' && secTipo) secTipo.value='';
+  setTimeout(function(){
+    if(v==='moto') document.getElementById('veh-marca-moto').focus();
+    else if(v==='auto') document.getElementById('veh-marca-auto').focus();
+    else document.getElementById('veh-otros-texto').focus();
+  },80);
+}
+
+function onMarcaMotoChange(){
+  var sel=document.getElementById('veh-marca-moto').value;
+  var wrap=document.getElementById('veh-marca-moto-otro-wrap');
+  wrap.style.display=(sel==='Otras')?'block':'none';
+  if(sel==='Otras') setTimeout(function(){document.getElementById('veh-marca-moto-otro').focus();},80);
+}
+function onMarcaAutoChange(){
+  var sel=document.getElementById('veh-marca-auto').value;
+  var wrap=document.getElementById('veh-marca-auto-otro-wrap');
+  wrap.style.display=(sel==='Otras')?'block':'none';
+  if(sel==='Otras') setTimeout(function(){document.getElementById('veh-marca-auto-otro').focus();},80);
+}
+
+function getMarcaVehiculo(){
+  var v=form.tipo_vehiculo_sel;
+  if(v==='moto'){
+    var s=document.getElementById('veh-marca-moto').value;
+    if(s==='Otras') return document.getElementById('veh-marca-moto-otro').value.trim()||'--';
+    return s||'--';
+  }
+  if(v==='auto'){
+    var s=document.getElementById('veh-marca-auto').value;
+    if(s==='Otras') return document.getElementById('veh-marca-auto-otro').value.trim()||'--';
+    return s||'--';
+  }
+  if(v==='otros') return document.getElementById('veh-otros-marca').value.trim()||'--';
+  return '--';
+}
+function getModeloVehiculo(){
+  var v=form.tipo_vehiculo_sel;
+  if(v==='moto') return document.getElementById('veh-modelo-moto').value.trim()||'--';
+  if(v==='auto') return document.getElementById('veh-modelo-auto').value.trim()||'--';
+  if(v==='otros') return '--';
+  return '--';
+}
+function getTipoVehiculoLabel(){
+  var v=form.tipo_vehiculo_sel;
+  if(v==='moto') return 'Moto';
+  if(v==='auto') return 'Auto';
+  if(v==='otros') return document.getElementById('veh-otros-texto').value.trim()||'Otros';
+  return '--';
+}
+
+/* ---- TIPO ACTA ---- */
 function setTipoActa(tipo){
   form.tipo_acta=tipo;
   document.getElementById('tipo-multa').className='tipo-item';
@@ -507,6 +645,11 @@ function setTipoActa(tipo){
     document.getElementById('tipo-secuestro').classList.add('selected-secuestro');
     document.getElementById('secuestro-section').classList.add('visible');
     document.getElementById('documentacion-section').style.display='none';
+    // Pre-fill sec-tipo y sec-marca con lo que ya seleccionaron
+    var secTipo=document.getElementById('f-sec-tipo');
+    var secMarca=document.getElementById('f-sec-marca');
+    if(secTipo && !secTipo.value) secTipo.value=getTipoVehiculoLabel();
+    if(secMarca && !secMarca.value){var m=getMarcaVehiculo();if(m!=='--')secMarca.value=m;}
   }
 }
 
@@ -523,6 +666,7 @@ function setSecuestroDoc(c,v,el){
   el.classList.add(v==='SI'?'si':'no');
 }
 
+/* ---- VALIDACIÓN ---- */
 function limpiarValidacion(){
   document.querySelectorAll('.field-inp.invalid').forEach(function(el){el.classList.remove('invalid');});
   document.getElementById('val-banner').classList.remove('show');
@@ -534,21 +678,24 @@ function validar(){
   var errores=[];limpiarValidacion();
   function req(id,label){
     var el=document.getElementById(id);
-    if(!el)return;
+    if(!el||el.closest('[style*="display:none"]')||el.closest('.vehiculo-extra:not(.show)'))return;
     if(!el.value.trim()){el.classList.add('invalid');errores.push(label);}
   }
-  if(!form.contexto){document.getElementById('contexto-err').classList.add('show');errores.push('Contexto (Operativo o Siniestro)');}
+  // Contexto
+  if(!form.contexto){document.getElementById('contexto-err').classList.add('show');errores.push('Contexto de la infracción');}
+  else if(form.contexto==='otros'){
+    var ctxTxt=document.getElementById('ctx-otros-texto').value.trim();
+    if(!ctxTxt){document.getElementById('ctx-otros-texto').classList.add('invalid');errores.push('Especificá el contexto');}
+  }
+  // Vehículo
   if(!form.tipo_vehiculo_sel){document.getElementById('vehiculo-err').classList.add('show');errores.push('Tipo de vehículo');}
   else if(form.tipo_vehiculo_sel==='otros'){
     var otrosTxt=document.getElementById('veh-otros-texto').value.trim();
-    if(!otrosTxt){
-      document.getElementById('veh-otros-texto').classList.add('invalid');
-      errores.push('Completá el tipo de vehículo en "Otros"');
-      document.getElementById('veh-otros-wrap').style.display='block';
-    }
-    else{form.tipo_vehiculo_sel_txt=otrosTxt;}
+    if(!otrosTxt){document.getElementById('veh-otros-texto').classList.add('invalid');errores.push('Especificá el tipo de vehículo');}
   }
+  // Tipo acta
   if(!form.tipo_acta){document.getElementById('tipo-err').classList.add('show');errores.push('Tipo de acta');}
+  // Campos obligatorios
   req('f-nro-acta','N° de acta');
   req('f-fecha','Fecha del hecho');
   req('f-hora','Hora del hecho');
@@ -556,8 +703,8 @@ function validar(){
   req('f-conductor','Apellido y nombre del conductor');
   req('f-dni','DNI del conductor');
   if(form.tipo_acta==='secuestro'){
-    req('f-sec-tipo','Tipo de vehículo');
-    req('f-sec-marca','Marca del vehículo');
+    req('f-sec-tipo','Tipo de vehículo (secuestro)');
+    req('f-sec-marca','Marca del vehículo (secuestro)');
     req('f-sec-chasis','Número de chasis');
   }
   if(errores.length>0){
@@ -570,10 +717,12 @@ function validar(){
   return true;
 }
 
+/* ---- GUARDAR ---- */
 function guardarActa(){
   if(!validar())return;
   var now=new Date(),n=rows.length+1;
   var nroActa=document.getElementById('f-nro-acta').value.trim();
+  var ctxLabel=form.contexto==='operativo'?'OPERATIVO':form.contexto==='siniestro'?'SINIESTRO':(document.getElementById('ctx-otros-texto').value.trim()||'OTROS');
   var row={
     n:n,
     fecha_registro:String(now.getDate()).padStart(2,'0')+'/'+(now.getMonth()+1)+'/'+now.getFullYear(),
@@ -583,10 +732,11 @@ function guardarActa(){
     secretario:document.getElementById('act-secretario').value.trim()||'--',
     legajo_sec:document.getElementById('act-legajo-sec').value.trim()||'--',
     tipo_acta:form.tipo_acta==='multa'?'MULTA':'SECUESTRO + MULTA',
-    contexto:form.contexto.toUpperCase(),
-    tipo_vehiculo_sel: form.tipo_vehiculo_sel==='otros'
-      ? (form.tipo_vehiculo_sel_txt||'Otros')
-      : (form.tipo_vehiculo_sel==='moto'?'Moto':'Auto'),
+    contexto:ctxLabel,
+    tipo_vehiculo_sel:getTipoVehiculoLabel(),
+    marca_vehiculo:getMarcaVehiculo(),
+    modelo_vehiculo:getModeloVehiculo(),
+    dominio_vehiculo:document.getElementById('veh-dominio').value.trim()||'--',
     nro_acta:nroActa,
     fecha_hecho:document.getElementById('f-fecha').value,
     hora_hecho:document.getElementById('f-hora').value,
@@ -618,16 +768,31 @@ function guardarActa(){
   showToast('Acta #'+nroActa+' registrada','ok');
 }
 
+/* ---- LIMPIAR ---- */
 function pedirLimpiar(){document.getElementById('modal-limpiar').classList.add('show');}
 function limpiar(sinModal){
   if(!sinModal)document.getElementById('modal-limpiar').classList.remove('show');
   limpiarValidacion();
-  form={contexto:'',tipo_vehiculo_sel:'',tipo_vehiculo_sel_txt:'',tipo_acta:'',registro:'',casco:'',seguro:'',niega_firmar:'',fuga:''};
-  document.getElementById('ctx-operativo').className='contexto-item';
-  document.getElementById('ctx-siniestro').className='contexto-item';
-  ['moto','auto','otros'].forEach(function(id){document.getElementById('veh-'+id).className='vehiculo-item';});
-  document.getElementById('veh-otros-wrap').style.display='none';
+  form={contexto:'',tipo_vehiculo_sel:'',tipo_acta:'',registro:'',casco:'',seguro:'',niega_firmar:'',fuga:''};
+  ['operativo','siniestro','otros'].forEach(function(id){document.getElementById('ctx-'+id).className='contexto-item';});
+  document.getElementById('contexto-otros-wrap').classList.remove('show');
+  document.getElementById('ctx-otros-texto').value='';
+  ['moto','auto','otros'].forEach(function(id){
+    document.getElementById('veh-'+id).className='vehiculo-item';
+    document.getElementById('veh-extra-'+id).classList.remove('show');
+  });
+  document.getElementById('dominio-wrap').style.display='none';
+  document.getElementById('veh-dominio').value='';
   document.getElementById('veh-otros-texto').value='';
+  document.getElementById('veh-otros-marca').value='';
+  document.getElementById('veh-marca-moto').value='';
+  document.getElementById('veh-modelo-moto').value='';
+  document.getElementById('veh-marca-moto-otro').value='';
+  document.getElementById('veh-marca-moto-otro-wrap').style.display='none';
+  document.getElementById('veh-marca-auto').value='';
+  document.getElementById('veh-modelo-auto').value='';
+  document.getElementById('veh-marca-auto-otro').value='';
+  document.getElementById('veh-marca-auto-otro-wrap').style.display='none';
   document.getElementById('vehiculo-err').classList.remove('show');
   document.getElementById('tipo-multa').className='tipo-item';
   document.getElementById('tipo-secuestro').className='tipo-item';
@@ -636,10 +801,11 @@ function limpiar(sinModal){
   setFechaHoraActual();
   ['f-nro-acta','f-direccion','f-conductor','f-dni','f-domicilio','f-descripcion',
    'f-sec-tipo','f-sec-marca','f-sec-modelo','f-sec-chasis','f-sec-color','f-sec-dominio']
-  .forEach(function(id){document.getElementById(id).value='';});
+  .forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
   document.querySelectorAll('.tg-btn').forEach(function(b){b.classList.remove('si','no');});
 }
 
+/* ---- MODALES / BORRAR ---- */
 function cerrarModal(cual){document.getElementById('modal-'+cual).classList.remove('show');if(cual==='borrar')pendingDelete=null;}
 function pedirBorrar(n){pendingDelete=n;document.getElementById('modal-borrar').classList.add('show');}
 function confirmarBorrar(){
@@ -650,59 +816,62 @@ function confirmarBorrar(){
   showToast('Acta eliminada','ok');
 }
 
+/* ---- RENDER ---- */
 function renderStats(){
-  var s=0,h=0,today=new Date(),hs=String(today.getDate()).padStart(2,"0")+"/"+(today.getMonth()+1)+"/"+today.getFullYear();
-  for(var i=0;i<rows.length;i++){if(rows[i].tipo_acta==="SECUESTRO + MULTA")s++;if(rows[i].fecha_registro===hs)h++;}
-  document.getElementById("st-total").textContent=rows.length;
-  document.getElementById("st-secuestro").textContent=s;
-  document.getElementById("st-hoy").textContent=h;
+  var s=0,h=0,today=new Date(),hs=String(today.getDate()).padStart(2,'0')+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+  for(var i=0;i<rows.length;i++){if(rows[i].tipo_acta==='SECUESTRO + MULTA')s++;if(rows[i].fecha_registro===hs)h++;}
+  document.getElementById('st-total').textContent=rows.length;
+  document.getElementById('st-secuestro').textContent=s;
+  document.getElementById('st-hoy').textContent=h;
 }
 function renderLog(){
-  var wrap=document.getElementById("log-wrap"),list=document.getElementById("log-list");
-  if(rows.length===0){wrap.style.display="none";return;}
-  wrap.style.display="block";var html="";
+  var wrap=document.getElementById('log-wrap'),list=document.getElementById('log-list');
+  if(rows.length===0){wrap.style.display='none';return;}
+  wrap.style.display='block';var html='';
   for(var i=rows.length-1;i>=0;i--){
     var r=rows[i],chips='<span class="chip a">#'+r.nro_acta+'</span>';
-    if(r.contexto)chips+='<span class="chip '+(r.contexto==="OPERATIVO"?'g':'b')+'">'+r.contexto+'</span>';
-    if(r.tipo_acta==="SECUESTRO + MULTA"){
+    if(r.contexto)chips+='<span class="chip '+(r.contexto==='OPERATIVO'?'g':r.contexto==='SINIESTRO'?'b':'a')+'">'+r.contexto+'</span>';
+    chips+='<span class="chip">'+r.tipo_vehiculo_sel+'</span>';
+    if(r.marca_vehiculo&&r.marca_vehiculo!=='--')chips+='<span class="chip t">'+r.marca_vehiculo+(r.modelo_vehiculo&&r.modelo_vehiculo!=='--'?' '+r.modelo_vehiculo:'')+'</span>';
+    if(r.dominio_vehiculo&&r.dominio_vehiculo!=='--')chips+='<span class="chip b">'+r.dominio_vehiculo+'</span>';
+    if(r.tipo_acta==='SECUESTRO + MULTA'){
       chips+='<span class="chip r">SECUESTRO</span>';
-      if(r.dominio!=="--")chips+='<span class="chip b">'+r.dominio+'</span>';
-      if(r.fuga==="SI")chips+='<span class="chip r">FUGA</span>';
+      if(r.fuga==='SI')chips+='<span class="chip r">FUGA</span>';
     } else {
       chips+='<span class="chip g">MULTA</span>';
-      if(r.registro==="NO")chips+='<span class="chip r">SIN REGISTRO</span>';
-      if(r.casco==="NO")chips+='<span class="chip r">SIN CASCO</span>';
-      if(r.seguro==="NO")chips+='<span class="chip r">SIN SEGURO</span>';
+      if(r.registro==='NO')chips+='<span class="chip r">SIN REGISTRO</span>';
+      if(r.casco==='NO')chips+='<span class="chip r">SIN CASCO</span>';
+      if(r.seguro==='NO')chips+='<span class="chip r">SIN SEGURO</span>';
     }
     chips+='<span class="chip">'+r.hora_hecho+'</span>';
-    if(r.inspector!=="--")chips+='<span class="chip t">'+r.inspector+'</span>';
-    html+='<div class="log-item"><div class="chips">'+chips+'</div><button class="del-btn" onclick="pedirBorrar('+r.n+')">✕</button></div>';
+    if(r.inspector!=='--')chips+='<span class="chip t">'+r.inspector+'</span>';
+    html+='<div class="log-item"><div class="chips">'+chips+'</div><button class="del-btn" onclick="pedirBorrar('+r.n+')">&#x2715;</button></div>';
   }
   list.innerHTML=html;
 }
 
+/* ---- EXPORT CSV ---- */
 function exportCSV(){
-  if(rows.length===0){showToast("No hay registros aún","err");return;}
-  var hdrs=["N","Fecha Registro","Hora Registro","Inspector","Legajo Inspector","Secretario","Legajo Secretario","Contexto","Tipo Vehículo Sel.","Tipo Acta","N° Acta","Fecha Hecho","Hora Hecho","Dirección","Conductor","DNI","Domicilio","Tipo Vehículo","Marca","Modelo","Chasis","Color","Dominio","Registro","Casco","Seguro","Niega Firmar","Fuga","Descripción"];
-  var lines=[hdrs.join(",")];
+  if(rows.length===0){showToast('No hay registros aún','err');return;}
+  var hdrs=['N','Fecha Registro','Hora Registro','Inspector','Legajo Inspector','Secretario','Legajo Secretario','Contexto','Tipo Vehículo','Marca Vehículo','Modelo Vehículo','Dominio Vehículo','Tipo Acta','N° Acta','Fecha Hecho','Hora Hecho','Dirección','Conductor','DNI','Domicilio','Tipo Veh.(Secuestro)','Marca(Secuestro)','Modelo(Secuestro)','Chasis','Color','Dominio(Secuestro)','Registro','Casco','Seguro','Niega Firmar','Fuga','Descripción'];
+  var lines=[hdrs.join(',')];
   for(var i=0;i<rows.length;i++){
     var r=rows[i];
-    var v=[r.n,r.fecha_registro,r.hora_registro,r.inspector,r.legajo_insp,r.secretario,r.legajo_sec,r.contexto||"--",r.tipo_vehiculo_sel||"--",r.tipo_acta,r.nro_acta,r.fecha_hecho,r.hora_hecho,r.direccion,r.conductor,r.dni,r.domicilio,r.tipo_vehiculo||"--",r.marca||"--",r.modelo||"--",r.chasis||"--",r.color||"--",r.dominio||"--",r.registro,r.casco,r.seguro,r.niega_firmar,r.fuga,r.descripcion];
-    lines.push(v.map(function(x){return"""+String(x).replace(/"/g,"""")+""";}).join(","));
+    var v=[r.n,r.fecha_registro,r.hora_registro,r.inspector,r.legajo_insp,r.secretario,r.legajo_sec,r.contexto||'--',r.tipo_vehiculo_sel||'--',r.marca_vehiculo||'--',r.modelo_vehiculo||'--',r.dominio_vehiculo||'--',r.tipo_acta,r.nro_acta,r.fecha_hecho,r.hora_hecho,r.direccion,r.conductor,r.dni,r.domicilio,r.tipo_vehiculo||'--',r.marca||'--',r.modelo||'--',r.chasis||'--',r.color||'--',r.dominio||'--',r.registro,r.casco,r.seguro,r.niega_firmar,r.fuga,r.descripcion];
+    lines.push(v.map(function(x){return '"'+String(x).replace(/"/g,'""')+'"';}).join(','));
   }
-  var blob=new Blob(["﻿"+lines.join("
-")],{type:"text/csv;charset=utf-8;"});
+  var blob=new Blob(["\uFEFF"+lines.join("\n")],{type:'text/csv;charset=utf-8;'});
   var url=URL.createObjectURL(blob);
-  var a=document.createElement("a");
-  a.href=url;a.download="actas_cem_"+new Date().toISOString().slice(0,10)+".csv";a.click();
-  URL.revokeObjectURL(url);showToast("CSV exportado","ok");
+  var a=document.createElement('a');
+  a.href=url;a.download='actas_cem_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+  URL.revokeObjectURL(url);showToast('CSV exportado','ok');
 }
 
+/* ---- TOAST ---- */
 function showToast(msg,tipo){
-  var t=document.getElementById("toast");
-  t.textContent=msg;
-  t.className="toast show "+(tipo||"");
-  setTimeout(function(){t.className="toast";},2800);
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast show '+(tipo||'');
+  setTimeout(function(){t.className='toast';},2800);
 }
 
 init();
