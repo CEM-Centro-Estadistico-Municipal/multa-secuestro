@@ -384,28 +384,12 @@ select.field-inp{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
       <span class="card-hdr-lbl" style="color:var(--cem-rojo);">Datos del Vehículo — Secuestro</span>
     </div>
     <div class="secuestro-field">
-      <span class="secuestro-field-lbl">Tipo de vehículo <span class="req-mark">*</span></span>
-      <input class="field-inp" type="text" id="f-sec-tipo" placeholder="Moto / Auto / Camioneta...">
-    </div>
-    <div class="secuestro-field">
-      <span class="secuestro-field-lbl">Marca <span class="req-mark">*</span></span>
-      <input class="field-inp" type="text" id="f-sec-marca" placeholder="Ej: Honda">
-    </div>
-    <div class="secuestro-field">
-      <span class="secuestro-field-lbl">Modelo</span>
-      <input class="field-inp" type="text" id="f-sec-modelo" placeholder="Ej: Wave 110">
-    </div>
-    <div class="secuestro-field">
       <span class="secuestro-field-lbl">Número de chasis <span class="req-mark">*</span></span>
       <input class="field-inp" type="text" id="f-sec-chasis" placeholder="N° de chasis completo">
     </div>
     <div class="secuestro-field">
       <span class="secuestro-field-lbl">Color</span>
       <input class="field-inp" type="text" id="f-sec-color" placeholder="Ej: Rojo, Negro, Azul...">
-    </div>
-    <div class="secuestro-field">
-      <span class="secuestro-field-lbl">Número de dominio (Patente)</span>
-      <input class="field-inp" type="text" id="f-sec-dominio" placeholder="Ej: A123BCD o 'no posee'">
     </div>
     <div class="secuestro-field" style="background:rgba(168,50,44,0.04);">
       <span class="secuestro-field-lbl" style="color:var(--cem-rojo);">¿Infractor se niega a firmar?</span>
@@ -577,10 +561,6 @@ function setTipoVehiculo(v){
   document.getElementById('veh-extra-'+v).classList.add('show');
   document.getElementById('vehiculo-err').classList.remove('show');
   document.getElementById('dominio-wrap').style.display='block';
-  // Pre-fill sec-tipo si está visible
-  var secTipo=document.getElementById('f-sec-tipo');
-  if(secTipo && v!=='otros') secTipo.value=v==='moto'?'Moto':'Auto';
-  if(v==='otros' && secTipo) secTipo.value='';
   setTimeout(function(){
     if(v==='moto') document.getElementById('veh-marca-moto').focus();
     else if(v==='auto') document.getElementById('veh-marca-auto').focus();
@@ -645,11 +625,6 @@ function setTipoActa(tipo){
     document.getElementById('tipo-secuestro').classList.add('selected-secuestro');
     document.getElementById('secuestro-section').classList.add('visible');
     document.getElementById('documentacion-section').style.display='none';
-    // Pre-fill sec-tipo y sec-marca con lo que ya seleccionaron
-    var secTipo=document.getElementById('f-sec-tipo');
-    var secMarca=document.getElementById('f-sec-marca');
-    if(secTipo && !secTipo.value) secTipo.value=getTipoVehiculoLabel();
-    if(secMarca && !secMarca.value){var m=getMarcaVehiculo();if(m!=='--')secMarca.value=m;}
   }
 }
 
@@ -703,8 +678,6 @@ function validar(){
   req('f-conductor','Apellido y nombre del conductor');
   req('f-dni','DNI del conductor');
   if(form.tipo_acta==='secuestro'){
-    req('f-sec-tipo','Tipo de vehículo (secuestro)');
-    req('f-sec-marca','Marca del vehículo (secuestro)');
     req('f-sec-chasis','Número de chasis');
   }
   if(errores.length>0){
@@ -752,12 +725,12 @@ function guardarActa(){
     row.niega_firmar='--';row.fuga='--';
   } else {
     row.registro='--';row.casco='--';row.seguro='--';
-    row.tipo_vehiculo=document.getElementById('f-sec-tipo').value.trim()||'--';
-    row.marca=document.getElementById('f-sec-marca').value.trim()||'--';
-    row.modelo=document.getElementById('f-sec-modelo').value.trim()||'--';
+    row.tipo_vehiculo=getTipoVehiculoLabel();
+    row.marca=getMarcaVehiculo();
+    row.modelo=getModeloVehiculo();
     row.chasis=document.getElementById('f-sec-chasis').value.trim()||'--';
     row.color=document.getElementById('f-sec-color').value.trim()||'--';
-    row.dominio=document.getElementById('f-sec-dominio').value.trim()||'--';
+    row.dominio=document.getElementById('veh-dominio').value.trim()||'--';
     row.niega_firmar=form.niega_firmar||'--';
     row.fuga=form.fuga||'--';
   }
@@ -800,7 +773,7 @@ function limpiar(sinModal){
   document.getElementById('documentacion-section').style.display='block';
   setFechaHoraActual();
   ['f-nro-acta','f-direccion','f-conductor','f-dni','f-domicilio','f-descripcion',
-   'f-sec-tipo','f-sec-marca','f-sec-modelo','f-sec-chasis','f-sec-color','f-sec-dominio']
+   'f-sec-chasis','f-sec-color']
   .forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
   document.querySelectorAll('.tg-btn').forEach(function(b){b.classList.remove('si','no');});
 }
